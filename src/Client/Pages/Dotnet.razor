@@ -1,0 +1,21 @@
+﻿@page "/dotnet"
+@inject HttpClient Http
+
+@if (MarkDownDocument == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    @((MarkupString)MarkDownDocument)
+}
+
+@code {
+    private string MarkDownDocument;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var markdownParser = new MarkdownParser(Http);
+        MarkDownDocument = await markdownParser.ParseToHtmlAsync("articles/dotnet.md");
+    }
+}
