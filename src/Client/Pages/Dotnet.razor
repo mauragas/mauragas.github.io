@@ -1,5 +1,6 @@
 ﻿@page "/dotnet"
 @inject HttpClient Http
+@inject IJSRuntime JSRuntime;
 
 @if (MarkDownDocument == null)
 {
@@ -15,7 +16,8 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        await JSRuntime.InvokeVoidAsync("setTitle", ".NET");
         var markdownParser = new MarkdownParser(Http);
-        MarkDownDocument = await markdownParser.ParseToHtmlAsync("articles/dotnet.md");
+        MarkDownDocument = await markdownParser.ParseToHtmlAsync("/dotnet/dotnet.md");
     }
 }

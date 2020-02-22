@@ -1,5 +1,17 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime;
 
-<h1>.NET and Linux</h1>
+<h1 class="justify-content-center">.NET on Linux</h1>
 
-<a href="https://github.com/mauragas/Mauragas.github.io" type="button" class="btn btn-dark">Github</a>
+<div class="btn-group" role="group">
+    <a href="https://github.com/mauragas/Mauragas.github.io" type="button" class="btn btn-dark">Page files</a>
+    <a href="https://github.com/mauragas/Mauragas.github.io/tree/develop" type="button" class="btn btn-dark">Source code</a>
+    <a href="https://github.com/mauragas/Mauragas.github.io/tree/articles" type="button" class="btn btn-dark">Article files</a>
+</div>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", ".NET on Linux");
+    }
+}

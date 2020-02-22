@@ -1,5 +1,6 @@
 ﻿@page "/linux"
 @inject HttpClient Http
+@inject IJSRuntime JSRuntime;
 
 @if (MarkDownDocument == null)
 {
@@ -15,7 +16,9 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        await JSRuntime.InvokeVoidAsync("setTitle", "Linux");
         var markdownParser = new MarkdownParser(Http);
-        MarkDownDocument = await markdownParser.ParseToHtmlAsync("articles/linux.md");
+        MarkDownDocument = await markdownParser.ParseToHtmlAsync("/linux/linux.md");
+        
     }
 }
