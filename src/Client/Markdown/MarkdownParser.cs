@@ -1,10 +1,11 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ColorCode.Styling;
 using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
 
-namespace Application.Markdown
+namespace Application.Client.Markdown
 {
     public class MarkdownParser
     {
@@ -54,7 +55,7 @@ namespace Application.Markdown
                 .UseSoftlineBreakAsHardlineBreak()
                 .UseTaskLists()
                 .UseYamlFrontMatter()
-                //.UseSyntaxHighlighting() // TODO Install extension when supported https://github.com/RichardSlater/Markdig.SyntaxHighlighting
+                .UseSyntaxHighlighting(StyleDictionary.DefaultLight, true)
                 .Build();
         }
     }

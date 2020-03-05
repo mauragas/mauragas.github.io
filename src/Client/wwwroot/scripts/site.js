@@ -1,1 +1,1 @@
-setTitle = (title) => { document.title = title; };
+setTitle = (title) => document.title = title;
