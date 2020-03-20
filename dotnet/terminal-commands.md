@@ -1,6 +1,6 @@
 # Terminal commands
 
-Common dotnet terminal commands for project or solution creation, build, publis and etc.
+Common dotnet terminal commands for project or solution creation, build, publish and etc.
 
 ## Documentation
 
@@ -81,4 +81,3 @@ Install default or preview Blazor template
 dotnet new -i "Microsoft.AspNetCore.Blazor.Templates::*"
 dotnet new -i "Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview*"
 ```
-
