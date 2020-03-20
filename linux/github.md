@@ -1,5 +1,9 @@
 # GitHub
 
+Various GitHub configurations and terminal commands.
+
+## Access token
+
 Set local repository to be able to access origin with generated token
 
 ```bash

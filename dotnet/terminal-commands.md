@@ -1,6 +1,12 @@
 # Terminal commands
 
-Get help
+Common dotnet terminal commands for project or solution creation, build, publis and etc.
+
+## Documentation
+
+[Dotnet commands](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet)
+
+## Get help
 
 ```bash
 dotnet help
@@ -73,6 +79,6 @@ Install default or preview Blazor template
 
 ```bash
 dotnet new -i "Microsoft.AspNetCore.Blazor.Templates::*"
-dotnet new -i "Microsoft.AspNetCore.Blazor.Templates::3.2.0-preview*"
+dotnet new -i "Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview*"
 ```
 

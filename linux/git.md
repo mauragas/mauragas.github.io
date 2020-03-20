@@ -1,5 +1,7 @@
 # Git
 
+Git terminal commands and various configurations.
+
 ## Configuration
 
 Sets the name you want atached to your commit transactions
@@ -183,7 +185,7 @@ git merge `bookmark`/`branch`
 git merge origin/`branch`
 ```
 
-Merge changes and squash commits to master branch *(At third command use `-m` if you want to edit messages from squashed commits)*
+Merge changes and squash commits to master branch _(At third command use `-m` if you want to edit messages from squashed commits)_
 
 ```bash
 git checkout master
@@ -326,4 +328,3 @@ Turn of login pop-ups
 ```bash
 git config --global credential.modalPrompt false
 ```
-

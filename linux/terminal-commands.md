@@ -1,5 +1,9 @@
 # Terminal commands
 
+Various terminal commands for Ubuntu based Linux distributions.
+
+## Packages
+
 Update and clean
 
 ```bash
@@ -16,9 +20,9 @@ sudo apt-get install ppa-purge
 sudo ppa-purge ppa:ubuntu-mozilla-daily/firefox-aurora
 ```
 
-Install packages from ubuntu make
+### [Ubuntu Make](https://wiki.ubuntu.com/ubuntu-make)
 
-[Ubuntu Make](https://wiki.ubuntu.com/ubuntu-make)
+Install packages from ubuntu make
 
 ```bash
 sudo add-apt-repository ppa:lyzardking/ubuntu-make &&
@@ -32,6 +36,8 @@ Install Firefox using `umake`
 umake web firefox-dev
 ```
 
+### Snap
+
 Install packages from Snap
 
 ```bash
@@ -40,11 +46,7 @@ sudo snap install "application-name"
 sudo snap remove "application-name"
 ```
 
-Create bootable USB drive
-
-```bash
-dd bs=4M if=linux.iso of=/dev/sdx status=progress oflag=sync
-```
+## Various commands
 
 Change default terminal applications
 

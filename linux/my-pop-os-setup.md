@@ -1,5 +1,9 @@
 # My Pop OS setup
 
+My workstation setup process steps, commands, application list and various configurations.
+
+## First steps
+
 Download ISO file from Pop OS [WEB site](https://system76.com/pop). Check USB device using command `sudo fdisk -l` and execute below command:
 
 ```bash
@@ -106,4 +110,3 @@ Change default to deepin terminal
 ```bash
 gsettings set org.gnome.desktop.default-applications.terminal exec 'deepin-terminal'
 ```
-

@@ -1,12 +1,12 @@
 # Blazor
 
+With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or the serve and it is build on open web standards.
+
 ## Documentation
 
-[Blazor main page](https://blazor.net)
-
-[Blazor documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/)
-
-[Source code](https://github.com/dotnet/blazor)
+1. [Blazor main page](https://blazor.net)
+2. [Blazor documentation](https://docs.microsoft.com/en-us/aspnet/core/blazor/)
+3. [Source code](https://github.com/dotnet/blazor)
 
 ## New project
 
