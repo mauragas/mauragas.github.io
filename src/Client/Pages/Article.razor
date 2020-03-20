@@ -1,0 +1,41 @@
+@page "/article/{FolderName}/{FileName}"
+@inject HttpClient Http
+@inject IJSRuntime JSRuntime;
+
+@if (MarkDownDocument is null)
+{
+    <div>
+        <SpinnerIndicator />
+    </div>
+}
+else
+{
+    @((MarkupString)MarkDownDocument)
+}
+
+@code {
+    private string MarkDownDocument;
+
+    [Parameter]
+    public string FolderName { get; set; }
+    [Parameter]
+    public string FileName { get; set; }
+
+    private GithubHandler _githubHandler = new GithubHandler();
+    private MarkdownParser _markdownParser = new MarkdownParser();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await JSRuntime.InvokeVoidAsync("setTitle", System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(FolderName));
+
+        try
+        {
+            var content = await _githubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
+            MarkDownDocument = _markdownParser.ParseContentToHtml(content);
+        }
+        catch (System.Exception e)
+        {
+            MarkDownDocument = e.Message;
+        }
+    }
+}
