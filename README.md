@@ -1,13 +1,11 @@
 # About
 
-GitHub pages project accessible from [Mauragas.github.io](https://mauragas.github.io/).
+Project accessible from [Mauragas.github.io](https://mauragas.github.io/).
 
+## Repository branches
 
-
-# Repository branches
-
-| Name    | Description                  |
-| ------- | ---------------------------- |
-| master  | Published application files. |
-| develop | Application source code.     |
-
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| master   | Published application files. |
+| develop  | Application source code.     |
+| articles | Page content files.          |
