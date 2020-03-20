@@ -1,17 +1,40 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime;
 
-<h1 class="justify-content-center">.NET on Linux</h1>
-
-<div class="btn-group" role="group">
-    <a href="https://github.com/mauragas/Mauragas.github.io" type="button" class="btn btn-dark">Page files</a>
-    <a href="https://github.com/mauragas/Mauragas.github.io/tree/develop" type="button" class="btn btn-dark">Source code</a>
-    <a href="https://github.com/mauragas/Mauragas.github.io/tree/articles" type="button" class="btn btn-dark">Article files</a>
+@if (_markDownDocument == null)
+{
+    <div class="col">
+        <SpinnerIndicator />
+    </div>
+}
+else
+{
+    <div class="col">
+        @((MarkupString)_markDownDocument)
+    </div>
+}
+<div class="w-100"></div>
+<div class="col">
+    <div class="btn-group" role="group">
+        <a href="https://github.com/mauragas/Mauragas.github.io" type="button" class="btn btn-dark">Page files</a>
+        <a href="https://github.com/mauragas/Mauragas.github.io/tree/develop" type="button" class="btn btn-dark">Source code</a>
+        <a href="https://github.com/mauragas/Mauragas.github.io/tree/articles" type="button" class="btn btn-dark">Article files</a>
+    </div>
 </div>
 
 @code {
+    private string _markDownDocument;
+    private GithubHandler _githubHandler;
+    private MarkdownParser _markdownParser;
+
     protected override async Task OnInitializedAsync()
     {
         await JSRuntime.InvokeVoidAsync("setTitle", ".NET on Linux");
+
+        _githubHandler = new GithubHandler();
+        _markdownParser = new MarkdownParser();
+
+        var readmeFileContent = await _githubHandler.GetArticleContentAsync("README.md");
+        _markDownDocument = _markdownParser.ParseContentToHtml(readmeFileContent);
     }
 }
