@@ -32,7 +32,7 @@ namespace Application.Client.Extensions
                         line = reader.ReadLine();
                         continue;
                     }
-                    return line.Substring(0, line.Length > 150 ? 150 : line.Length).Trim() + "..";
+                    return line.Trim();
                 }
             }
             return string.Empty;
