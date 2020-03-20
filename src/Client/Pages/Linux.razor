@@ -1,24 +1,26 @@
 ﻿@page "/linux"
-@inject HttpClient Http
-@inject IJSRuntime JSRuntime;
+@inject IJSRuntime JSRuntime
 
-@if (MarkDownDocument == null)
+@if (Articles is null)
 {
-    <p><em>Loading...</em></p>
+    <div>
+        <SpinnerIndicator />
+    </div>
 }
 else
 {
-    @((MarkupString)MarkDownDocument)
+    <div>
+        <Articles Files=@Articles/>
+    </div>
 }
 
 @code {
-    private string MarkDownDocument;
+    private List<Application.Shared.Models.FileInfo> Articles { get; set; }
+    private GithubHandler _githubHandler = new GithubHandler();
 
     protected override async Task OnInitializedAsync()
     {
         await JSRuntime.InvokeVoidAsync("setTitle", "Linux");
-        var markdownParser = new MarkdownParser(Http);
-        MarkDownDocument = await markdownParser.ParseToHtmlAsync("/linux/linux.md");
-        
+        Articles = await _githubHandler.GetArticlesAsync("linux");
     }
 }
