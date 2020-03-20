@@ -5,12 +5,12 @@
     @for (int i = 0; i < @Files.Count; i=i+3)
     {
         var items = @Files.Skip(i).Take(3);
-        <div class="card-deck">
-            @foreach (var file in items)
-            {
-                <Article FileInfo=@file/>
-            }
-        </div>
+            <div class="card-deck">
+                @foreach (var file in items)
+                {
+                    <Article FileInfo=@file/>
+                }
+            </div>
         <br/>
     }
 </div>
