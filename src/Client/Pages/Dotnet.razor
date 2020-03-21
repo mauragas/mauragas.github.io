@@ -3,26 +3,25 @@
 
 @if (_articles is null)
 {
-    <div>
-        <SpinnerIndicator />
-    </div>
+  <div>
+    <SpinnerIndicator />
+  </div>
 }
 else
 {
-    <div>
-        <Articles Files=@_articles/>
-    </div>
+  <div>
+    <Articles Files=@_articles/>
+  </div>
 }
 
 @code {
-    private List<FileInfo> _articles;
-    private GithubHandler _githubHandler;
+  private List<FileInfo> _articles;
+  private GithubHandler _githubHandler;
 
-    protected override async Task OnInitializedAsync()
-    {
-        _githubHandler = new GithubHandler();
-
-        await JSRuntime.InvokeVoidAsync("setTitle", ".NET");
-        _articles = await _githubHandler.GetArticlesAsync("dotnet");
-    }
+  protected override async Task OnInitializedAsync()
+  {
+    _githubHandler = new GithubHandler();
+    await JSRuntime.InvokeVoidAsync("setTitle", ".NET");
+    _articles = await _githubHandler.GetArticlesAsync("dotnet");
+  }
 }

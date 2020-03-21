@@ -1,37 +1,37 @@
 ﻿﻿<div class="pl-4 navbar navbar-dark">
-    <button class="navbar-toggler" @onclick="ToggleNavMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <button class="navbar-toggler" @onclick="ToggleNavMenu">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </div>
 
 <div class="@NavMenuCssClass pl-4 navbar-brand sidebar-logo" href="" @onclick="ToggleNavMenu">
-    <a href="">
-        <img class="img-responsive" id="logo" src="images/logo_200x200.png" />
-    </a>
+  <a href="">
+    <img class="img-responsive" id="logo" src="images/logo_200x200.png" />
+  </a>
 </div>
 
 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <ul class="nav flex-column">
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="dotnet">
-                <span class="oi oi-location" aria-hidden="true"></span> .NET
-            </NavLink>
-        </li>
-        <li class="nav-item px-3">
-            <NavLink class="nav-link" href="linux">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Linux
-            </NavLink>
-        </li>
-    </ul>
+  <ul class="nav flex-column">
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="dotnet">
+        <span class="oi oi-location" aria-hidden="true"></span> .NET
+      </NavLink>
+    </li>
+    <li class="nav-item px-3">
+      <NavLink class="nav-link" href="linux">
+        <span class="oi oi-list-rich" aria-hidden="true"></span> Linux
+      </NavLink>
+  </li>
+  </ul>
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
+  private bool collapseNavMenu = true;
 
-    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+  private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
-    private void ToggleNavMenu()
-    {
-        collapseNavMenu = !collapseNavMenu;
-    }
+  private void ToggleNavMenu()
+  {
+    collapseNavMenu = !collapseNavMenu;
+  }
 }

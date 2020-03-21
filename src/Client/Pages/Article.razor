@@ -4,9 +4,9 @@
 
 @if (_markDownDocument is null)
 {
-    <div>
-        <SpinnerIndicator />
-    </div>
+  <div>
+    <SpinnerIndicator />
+  </div>
 }
 else
 {
@@ -14,34 +14,34 @@ else
 }
 
 @code {
-    [Parameter]
-    public string FolderName { get; set; }
+  [Parameter]
+  public string FolderName { get; set; }
 
-    [Parameter]
-    public string FileName { get; set; }
+  [Parameter]
+  public string FileName { get; set; }
 
-    private string _markDownDocument;
-    private GithubHandler _githubHandler;
-    private MarkdownParser _markdownParser;
+  private string _markDownDocument;
+  private GithubHandler _githubHandler;
+  private MarkdownParser _markdownParser;
 
-    protected override async Task OnInitializedAsync()
+  protected override async Task OnInitializedAsync()
+  {
+    var title = CultureInfo.CurrentCulture.TextInfo
+      .ToTitleCase(FileName.Replace('-', ' ')
+      .Replace(".md", string.Empty));
+    await JSRuntime.InvokeVoidAsync("setTitle", title);
+
+    try
     {
-        var title = CultureInfo.CurrentCulture.TextInfo
-                    .ToTitleCase(FileName.Replace('-', ' ')
-                    .Replace(".md", string.Empty));
-        await JSRuntime.InvokeVoidAsync("setTitle", title);
+      _githubHandler = new GithubHandler();
+      _markdownParser = new MarkdownParser();
 
-        try
-        {
-            _githubHandler = new GithubHandler();
-            _markdownParser = new MarkdownParser();
-
-            var content = await _githubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
-            _markDownDocument = _markdownParser.ParseContentToHtml(content);
-        }
-        catch (System.Exception e)
-        {
-            _markDownDocument = e.Message;
-        }
+      var content = await _githubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
+      _markDownDocument = _markdownParser.ParseContentToHtml(content);
     }
+    catch (System.Exception e)
+    {
+      _markDownDocument = e.Message;
+    }
+  }
 }
