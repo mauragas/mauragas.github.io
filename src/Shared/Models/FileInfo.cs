@@ -1,5 +1,3 @@
-using System;
-
 namespace Application.Shared.Models
 {
     public class FileInfo

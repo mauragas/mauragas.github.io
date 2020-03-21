@@ -1,8 +1,8 @@
 @page "/article/{FolderName}/{FileName}"
-@inject HttpClient Http
 @inject IJSRuntime JSRuntime;
+@using System.Globalization;
 
-@if (MarkDownDocument is null)
+@if (_markDownDocument is null)
 {
     <div>
         <SpinnerIndicator />
@@ -10,32 +10,38 @@
 }
 else
 {
-    @((MarkupString)MarkDownDocument)
+    @((MarkupString)_markDownDocument)
 }
 
 @code {
-    private string MarkDownDocument;
-
     [Parameter]
     public string FolderName { get; set; }
+
     [Parameter]
     public string FileName { get; set; }
 
-    private GithubHandler _githubHandler = new GithubHandler();
-    private MarkdownParser _markdownParser = new MarkdownParser();
+    private string _markDownDocument;
+    private GithubHandler _githubHandler;
+    private MarkdownParser _markdownParser;
 
     protected override async Task OnInitializedAsync()
     {
-        await JSRuntime.InvokeVoidAsync("setTitle", System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(FolderName));
+        var title = CultureInfo.CurrentCulture.TextInfo
+                    .ToTitleCase(FileName.Replace('-', ' ')
+                    .Replace(".md", string.Empty));
+        await JSRuntime.InvokeVoidAsync("setTitle", title);
 
         try
         {
+            _githubHandler = new GithubHandler();
+            _markdownParser = new MarkdownParser();
+
             var content = await _githubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
-            MarkDownDocument = _markdownParser.ParseContentToHtml(content);
+            _markDownDocument = _markdownParser.ParseContentToHtml(content);
         }
         catch (System.Exception e)
         {
-            MarkDownDocument = e.Message;
+            _markDownDocument = e.Message;
         }
     }
 }

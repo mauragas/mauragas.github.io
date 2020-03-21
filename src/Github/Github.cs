@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Octokit;
 using Octokit.Internal;
 using FileInfo = Application.Shared.Models.FileInfo;
+
 namespace Application.Github
 {
     public class Github
@@ -30,7 +31,9 @@ namespace Application.Github
         {
             try
             {
-                var filesFromGithub = (await _githubClient.Repository.Content.GetAllContentsByRef(_repositoryOwner, _repositoryName, path, branchName))
+                var allContent = await _githubClient.Repository.Content
+                    .GetAllContentsByRef(_repositoryOwner, _repositoryName, path, branchName);
+                var filesFromGithub = allContent
                     .Where(f => f.Type == ContentType.File &&
                                 Path.GetExtension(f.Name) == fileExtension)
                     .ToList();
@@ -45,7 +48,9 @@ namespace Application.Github
             }
             catch
             {
-                throw new FileNotFoundException($"Failed to retrieve files from {_repositoryName} repository {branchName} branch.");
+                throw new FileNotFoundException("Failed to retrieve files from " +
+                                                $"{_repositoryName} repository " +
+                                                $"{branchName} branch.");
             }
         }
 
@@ -53,12 +58,15 @@ namespace Application.Github
         {
             try
             {
-                var files = await _githubClient.Repository.Content.GetAllContentsByRef(_repositoryOwner, _repositoryName, filePath, branchName);
+                var files = await _githubClient.Repository.Content
+                    .GetAllContentsByRef(_repositoryOwner, _repositoryName, filePath, branchName);
                 return files.FirstOrDefault()?.Content;
             }
             catch
             {
-                throw new FileNotFoundException($"Could not find {filePath} from {_repositoryName} repository {branchName} branch.");
+                throw new FileNotFoundException($"Could not find {filePath} from " +
+                                                $"{_repositoryName} repository " +
+                                                $"{branchName} branch.");
             }
         }
 

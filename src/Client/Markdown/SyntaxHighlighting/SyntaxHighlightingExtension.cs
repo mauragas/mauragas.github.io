@@ -20,7 +20,8 @@ namespace Application.Client.Markdown.SyntaxHighlighting
 
         public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer)
         {
-            renderer.ObjectRenderers.ReplaceOrAdd<CodeBlockRenderer>(new HighlightedCodeBlockRenderer(_style, _inlineCss));
+            renderer.ObjectRenderers.ReplaceOrAdd<CodeBlockRenderer>(
+                new HighlightedCodeBlockRenderer(_style,_inlineCss));
         }
     }
 }

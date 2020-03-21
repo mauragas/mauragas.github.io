@@ -1,7 +1,7 @@
 ﻿@page "/linux"
 @inject IJSRuntime JSRuntime
 
-@if (Articles is null)
+@if (_articles is null)
 {
     <div>
         <SpinnerIndicator />
@@ -10,17 +10,17 @@
 else
 {
     <div>
-        <Articles Files=@Articles/>
+        <Articles Files=@_articles/>
     </div>
 }
 
 @code {
-    private List<Application.Shared.Models.FileInfo> Articles { get; set; }
+    private List<FileInfo> _articles;
     private GithubHandler _githubHandler = new GithubHandler();
 
     protected override async Task OnInitializedAsync()
     {
         await JSRuntime.InvokeVoidAsync("setTitle", "Linux");
-        Articles = await _githubHandler.GetArticlesAsync("linux");
+        _articles = await _githubHandler.GetArticlesAsync("linux");
     }
 }
