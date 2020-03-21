@@ -26,7 +26,10 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        await JSRuntime.InvokeVoidAsync("setTitle", CultureInfo.CurrentCulture.TextInfo.ToTitleCase(FolderName));
+        var title = CultureInfo.CurrentCulture.TextInfo
+                    .ToTitleCase(FileName.Replace('-', ' ')
+                    .Replace(".md", string.Empty));
+        await JSRuntime.InvokeVoidAsync("setTitle", title);
 
         try
         {
