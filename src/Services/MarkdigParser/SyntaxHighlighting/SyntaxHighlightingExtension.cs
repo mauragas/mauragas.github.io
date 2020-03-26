@@ -3,7 +3,7 @@ using Markdig.Renderers;
 using Markdig.Renderers.Html;
 using ColorCode.Styling;
 
-namespace Application.Services.Markdown.SyntaxHighlighting
+namespace Application.Services.MarkdigParser.SyntaxHighlighting
 {
   public class SyntaxHighlightingExtension : IMarkdownExtension
   {
@@ -21,7 +21,7 @@ namespace Application.Services.Markdown.SyntaxHighlighting
     public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer)
     {
       renderer.ObjectRenderers.ReplaceOrAdd<CodeBlockRenderer>(
-          new HighlightedCodeBlockRenderer(_style, _inlineCss));
+        new HighlightedCodeBlockRenderer(_style, _inlineCss));
     }
   }
 }

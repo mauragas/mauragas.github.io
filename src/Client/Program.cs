@@ -1,7 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Application.Services;
-using Application.Services.Github;
-using Application.Services.Markdown;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -13,9 +12,9 @@ namespace Application.Client
     {
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-      builder.Services.AddSingleton<IMarkdownParser, MarkdownParser>();
-      builder.Services.AddSingleton<IGithubHandler, GithubHandler>();
-      builder.Services.AddSingleton<IContentHandler, ContentHandler>();
+      builder.Services.AddSingleton<IMarkdownParser, MarkdigParserService>();
+      builder.Services.AddSingleton<IArticleRepository, GithubRepositoryService>();
+      builder.Services.AddSingleton<IContentHandler, ContentHandlerService>();
 
       builder.RootComponents.Add<App>("app");
 

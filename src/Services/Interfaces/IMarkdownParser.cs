@@ -1,4 +1,4 @@
-namespace Application.Services.Markdown
+namespace Application.Services.Interfaces
 {
   public interface IMarkdownParser
   {

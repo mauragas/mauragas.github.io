@@ -1,14 +1,16 @@
+using Application.Services.Interfaces;
 using ColorCode.Styling;
 using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
+using Application.Services.MarkdigParser;
 
-namespace Application.Services.Markdown
+namespace Application.Services
 {
-  public class MarkdownParser : IMarkdownParser
+  public class MarkdigParserService : IMarkdownParser
   {
     private readonly MarkdownPipeline _markdownPipeline;
 
-    public MarkdownParser()
+    public MarkdigParserService()
     {
       _markdownPipeline = GetMarkdownPipeline();
     }

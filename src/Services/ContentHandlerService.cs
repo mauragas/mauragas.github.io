@@ -1,18 +1,18 @@
 using System.Collections.Generic;
-using Application.Services.Github;
 using Application.Shared.Models;
 using System.Threading.Tasks;
+using Application.Services.Interfaces;
 
 namespace Application.Services
 {
-  public class ContentHandler : IContentHandler
+  public class ContentHandlerService : IContentHandler
   {
     public string ReadmeFileContent { get; set; }
     public List<ArticleFileInfo> Articles { get; set; }
 
-    private IGithubHandler _githubHandler;
+    private IArticleRepository _githubHandler;
 
-    public ContentHandler(IGithubHandler githubHandler = default)
+    public ContentHandlerService(IArticleRepository githubHandler = default)
     {
       Articles = new List<ArticleFileInfo>();
       _githubHandler = githubHandler;

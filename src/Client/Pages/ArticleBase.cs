@@ -1,9 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Services;
-using Application.Services.Github;
-using Application.Services.Markdown;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -26,7 +24,7 @@ namespace Application.Client.Pages
     internal IMarkdownParser MarkdownParser { get; set; }
 
     [Inject]
-    internal IGithubHandler GithubHandler { get; set; }
+    internal IArticleRepository GithubHandler { get; set; }
 
     [Inject]
     internal IContentHandler ContentHandler { get; set; }

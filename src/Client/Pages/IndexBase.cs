@@ -1,6 +1,5 @@
 using System.Threading.Tasks;
-using Application.Services;
-using Application.Services.Markdown;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -22,7 +21,7 @@ namespace Application.Client.Pages
     protected override async Task OnInitializedAsync()
     {
       await JSRuntime.InvokeVoidAsync("setTitle", ".NET on Linux");
-      
+
       if (string.IsNullOrWhiteSpace(ContentHandler.ReadmeFileContent))
         await ContentHandler.SetReadmeAsync();
       MarkDownDocument = MarkdownParser.ParseContentToHtml(ContentHandler.ReadmeFileContent);

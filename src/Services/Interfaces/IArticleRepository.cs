@@ -2,9 +2,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Shared.Models;
 
-namespace Application.Services.Github
+namespace Application.Services.Interfaces
 {
-  public interface IGithubHandler
+  public interface IArticleRepository
   {
     Task<List<ArticleFileInfo>> GetArticlesAsync(string pathToFolder);
     Task<string> GetArticleContentAsync(string pathToFile);
