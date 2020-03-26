@@ -4,7 +4,7 @@ using Markdig.Syntax;
 using ColorCode;
 using ColorCode.Styling;
 
-namespace Application.Client.Markdown.SyntaxHighlighting
+namespace Application.Services.Markdown.SyntaxHighlighting
 {
   public class HighlightedCodeBlockRenderer : CodeBlockRenderer
   {

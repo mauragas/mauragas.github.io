@@ -4,9 +4,9 @@ using System.Threading.Tasks;
 using Application.Client.Extensions;
 using Application.Shared.Models;
 
-namespace Application.Client.Github
+namespace Application.Services.Github
 {
-  public class GithubHandler
+  public class GithubHandler : IGithubHandler
   {
     public string BranchName { get; set; } = "articles";
 
@@ -25,6 +25,7 @@ namespace Application.Client.Github
 
       var parallelTasks = files.Select(file => Task.Run(async () =>
       {
+        file.FolderName = pathToFolder;
         file.Content = await _github.GetFileContent(file.GithubPath, BranchName);
         file.Title = file.Content.GetTitle();
         file.Description = file.Content.GetDescription();

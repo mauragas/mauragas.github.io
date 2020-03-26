@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -46,11 +47,11 @@ namespace Application.Github
           Content = f.Content
         }).ToList();
       }
-      catch
+      catch (Exception e)
       {
         throw new FileNotFoundException("Failed to retrieve files from " +
                                         $"{_repositoryName} repository " +
-                                        $"{branchName} branch.");
+                                        $"{branchName} branch. {e}");
       }
     }
 
@@ -62,11 +63,11 @@ namespace Application.Github
             .GetAllContentsByRef(_repositoryOwner, _repositoryName, filePath, branchName);
         return files.FirstOrDefault()?.Content;
       }
-      catch
+      catch (Exception e)
       {
         throw new FileNotFoundException($"Could not find {filePath} from " +
                                         $"{_repositoryName} repository " +
-                                        $"{branchName} branch.");
+                                        $"{branchName} branch. {e}");
       }
     }
 

@@ -2,9 +2,9 @@ using ColorCode.Styling;
 using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
 
-namespace Application.Client.Markdown
+namespace Application.Services.Markdown
 {
-  public class MarkdownParser
+  public class MarkdownParser : IMarkdownParser
   {
     private readonly MarkdownPipeline _markdownPipeline;
 

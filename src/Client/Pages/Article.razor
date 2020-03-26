@@ -1,8 +1,7 @@
 @page "/article/{FolderName}/{FileName}"
-@inject IJSRuntime JSRuntime;
-@using System.Globalization;
+@inherits ArticleBase
 
-@if (_markDownDocument is null)
+@if (MarkupDocument is null)
 {
   <div>
     <SpinnerIndicator />
@@ -10,38 +9,5 @@
 }
 else
 {
-    @((MarkupString)_markDownDocument)
-}
-
-@code {
-  [Parameter]
-  public string FolderName { get; set; }
-
-  [Parameter]
-  public string FileName { get; set; }
-
-  private string _markDownDocument;
-  private GithubHandler _githubHandler;
-  private MarkdownParser _markdownParser;
-
-  protected override async Task OnInitializedAsync()
-  {
-    var title = CultureInfo.CurrentCulture.TextInfo
-      .ToTitleCase(FileName.Replace('-', ' ')
-      .Replace(".md", string.Empty));
-    await JSRuntime.InvokeVoidAsync("setTitle", title);
-
-    try
-    {
-      _githubHandler = new GithubHandler();
-      _markdownParser = new MarkdownParser();
-
-      var content = await _githubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
-      _markDownDocument = _markdownParser.ParseContentToHtml(content);
-    }
-    catch (System.Exception e)
-    {
-      _markDownDocument = e.Message;
-    }
-  }
+  @((MarkupString)MarkupDocument)
 }

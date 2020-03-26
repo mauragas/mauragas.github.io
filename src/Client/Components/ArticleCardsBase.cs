@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Application.Client.Components
 {
-  public class ArticlesBase : ComponentBase
+  public class ArticleCardsBase : ComponentBase
   {
     [Parameter]
     public List<FileInfo> Files { get; set; }
