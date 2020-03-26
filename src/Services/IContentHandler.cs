@@ -7,7 +7,7 @@ namespace Application.Services
   public interface IContentHandler
   {
     string ReadmeFileContent { get; set; }
-    List<FileInfo> Articles { get; set; }
+    List<ArticleFileInfo> Articles { get; set; }
     Task AddArticlesAsync(string folderName);
     Task SetReadmeAsync();
   }

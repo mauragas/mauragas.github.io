@@ -8,25 +8,26 @@ namespace Application.Services.Github
 {
   public class GithubHandler : IGithubHandler
   {
-    public string BranchName { get; set; } = "articles";
+    public string BranchName { get; set; }
 
     private Application.Github.Github _github;
     private string _fileExtension;
 
-    public GithubHandler()
+    public GithubHandler(string branchName = "articles")
     {
+      BranchName = branchName;
       _fileExtension = ".md";
       _github = new Application.Github.Github("mauragas", "Mauragas.github.io");
     }
 
-    public async Task<List<FileInfo>> GetArticlesAsync(string pathToFolder)
+    public async Task<List<ArticleFileInfo>> GetArticlesAsync(string pathToFolder)
     {
-      var files = await _github.GetFiles(pathToFolder, BranchName, _fileExtension);
+      var files = await _github.GetArticleFiles(pathToFolder, BranchName, _fileExtension);
 
       var parallelTasks = files.Select(file => Task.Run(async () =>
       {
         file.FolderName = pathToFolder;
-        file.Content = await _github.GetFileContent(file.GithubPath, BranchName);
+        file.Content = await _github.GetArticleFileContent(file.GithubPath, BranchName);
         file.Title = file.Content.GetTitle();
         file.Description = file.Content.GetDescription();
       }));
@@ -38,7 +39,7 @@ namespace Application.Services.Github
 
     public async Task<string> GetArticleContentAsync(string pathToFile)
     {
-      return await _github.GetFileContent(pathToFile, BranchName);
+      return await _github.GetArticleFileContent(pathToFile, BranchName);
     }
   }
 }

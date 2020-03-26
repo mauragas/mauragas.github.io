@@ -13,9 +13,9 @@ namespace Application.Client
     {
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-      builder.Services.AddScoped<IMarkdownParser, MarkdownParser>();
-      builder.Services.AddScoped<IGithubHandler, GithubHandler>();
-      builder.Services.AddScoped<IContentHandler, ContentHandler>();
+      builder.Services.AddSingleton<IMarkdownParser, MarkdownParser>();
+      builder.Services.AddSingleton<IGithubHandler, GithubHandler>();
+      builder.Services.AddSingleton<IContentHandler, ContentHandler>();
 
       builder.RootComponents.Add<App>("app");
 

@@ -8,15 +8,16 @@ namespace Application.Services
   public class ContentHandler : IContentHandler
   {
     public string ReadmeFileContent { get; set; }
-    public List<FileInfo> Articles { get; set; }
+    public List<ArticleFileInfo> Articles { get; set; }
 
     private IGithubHandler _githubHandler;
 
-    public ContentHandler()
+    public ContentHandler(IGithubHandler githubHandler = default)
     {
-      Articles = new List<FileInfo>();
-      _githubHandler = new GithubHandler();
+      Articles = new List<ArticleFileInfo>();
+      _githubHandler = githubHandler;
     }
+
     public async Task AddArticlesAsync(string folderName)
     {
       Articles.AddRange(await _githubHandler?.GetArticlesAsync(folderName));

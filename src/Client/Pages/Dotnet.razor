@@ -1,7 +1,7 @@
 ﻿@page "/dotnet"
 @inherits DotnetBase
 
-@if (Articles is null)
+@if (ArticleFiles is null)
 {
   <div>
     <SpinnerIndicator />
@@ -10,6 +10,6 @@
 else
 {
   <div>
-    <ArticleCards Files=@Articles/>
+    <ArticleCards ArticleFiles=@ArticleFiles/>
   </div>
 }

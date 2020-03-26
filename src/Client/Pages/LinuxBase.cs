@@ -10,7 +10,7 @@ namespace Application.Client.Pages
 {
   public class LinuxBase : ComponentBase
   {
-    internal List<FileInfo> Articles { get; set; }
+    internal List<ArticleFileInfo> ArticleFiles { get; set; }
 
     [Inject]
     internal IJSRuntime JSRuntime { get; set; }
@@ -25,8 +25,8 @@ namespace Application.Client.Pages
       var folderName = "linux";
       if (!ContentHandler.Articles.Any(a => a.FolderName == folderName))
         await ContentHandler.AddArticlesAsync(folderName);
-      Articles = ContentHandler.Articles.Where(a => a.FolderName == folderName)
-        .ToList(); ;
+      ArticleFiles = ContentHandler.Articles.Where(a => a.FolderName == folderName)
+        .ToList();
     }
   }
 }

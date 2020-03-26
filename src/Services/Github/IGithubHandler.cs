@@ -6,7 +6,7 @@ namespace Application.Services.Github
 {
   public interface IGithubHandler
   {
-    Task<List<FileInfo>> GetArticlesAsync(string pathToFolder);
+    Task<List<ArticleFileInfo>> GetArticlesAsync(string pathToFolder);
     Task<string> GetArticleContentAsync(string pathToFile);
   }
 }

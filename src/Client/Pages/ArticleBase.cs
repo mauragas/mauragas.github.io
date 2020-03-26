@@ -42,20 +42,12 @@ namespace Application.Client.Pages
 
     internal async Task<string> GetMarkupDocument()
     {
-      try
-      {
-        var cashedArticle = ContentHandler.Articles
-          .FirstOrDefault(a => a.FolderName == FolderName && a.FileName == FileName);
-        if (cashedArticle != null)
-          return MarkdownParser.ParseContentToHtml(cashedArticle.Content);
-
-        var content = await GithubHandler.GetArticleContentAsync($"{FolderName}/{FileName}");
-        return MarkdownParser.ParseContentToHtml(content);
-      }
-      catch (System.Exception e)
-      {
-        return e.Message;
-      }
+      var cashedArticle = ContentHandler.Articles
+        .FirstOrDefault(a => a.FolderName == FolderName && a.FileName == FileName);
+      var content = cashedArticle is null
+        ? await GithubHandler.GetArticleContentAsync($"{FolderName}/{FileName}")
+        : cashedArticle.Content;
+      return MarkdownParser.ParseContentToHtml(content);
     }
   }
 }

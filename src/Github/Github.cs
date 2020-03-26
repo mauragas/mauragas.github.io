@@ -5,9 +5,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using Application.Shared.Models;
 using Octokit;
 using Octokit.Internal;
-using FileInfo = Application.Shared.Models.FileInfo;
 
 namespace Application.Github
 {
@@ -28,7 +28,7 @@ namespace Application.Github
       _githubClient = new GitHubClient(connection);
     }
 
-    public async Task<List<FileInfo>> GetFiles(string path, string branchName, string fileExtension)
+    public async Task<List<ArticleFileInfo>> GetArticleFiles(string path, string branchName, string fileExtension)
     {
       try
       {
@@ -39,7 +39,7 @@ namespace Application.Github
                         Path.GetExtension(f.Name) == fileExtension)
             .ToList();
 
-        return filesFromGithub.Select(f => new FileInfo
+        return filesFromGithub.Select(f => new ArticleFileInfo
         {
           FileName = f.Name,
           DownloadUrl = f.DownloadUrl,
@@ -55,7 +55,7 @@ namespace Application.Github
       }
     }
 
-    public async Task<string> GetFileContent(string filePath, string branchName)
+    public async Task<string> GetArticleFileContent(string filePath, string branchName)
     {
       try
       {

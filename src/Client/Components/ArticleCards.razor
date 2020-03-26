@@ -1,8 +1,8 @@
 @inherits ArticleCardsBase
 
 <div class="card-columns">
-  @foreach (var file in @Files)
+  @foreach (var file in ArticleFiles)
   {
-    <ArticleCard FileInfo=@file/>
+    <ArticleCard ArticleFileInfo=@file/>
   }
 </div>

@@ -22,6 +22,7 @@ namespace Application.Client.Pages
     protected override async Task OnInitializedAsync()
     {
       await JSRuntime.InvokeVoidAsync("setTitle", ".NET on Linux");
+      
       if (string.IsNullOrWhiteSpace(ContentHandler.ReadmeFileContent))
         await ContentHandler.SetReadmeAsync();
       MarkDownDocument = MarkdownParser.ParseContentToHtml(ContentHandler.ReadmeFileContent);

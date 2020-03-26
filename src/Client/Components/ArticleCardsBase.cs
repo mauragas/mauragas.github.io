@@ -7,6 +7,6 @@ namespace Application.Client.Components
   public class ArticleCardsBase : ComponentBase
   {
     [Parameter]
-    public List<FileInfo> Files { get; set; }
+    public List<ArticleFileInfo> ArticleFiles { get; set; }
   }
 }
