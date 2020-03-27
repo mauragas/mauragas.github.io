@@ -4,14 +4,15 @@ using Markdig.Syntax;
 using ColorCode;
 using ColorCode.Styling;
 
-namespace Application.Client.Markdown.SyntaxHighlighting
+namespace Application.Services.MarkdigParser.SyntaxHighlighting
 {
   public class HighlightedCodeBlockRenderer : CodeBlockRenderer
   {
     private readonly StyleDictionary _style;
     private readonly bool _inlineCss;
 
-    public HighlightedCodeBlockRenderer(StyleDictionary style, bool inlineCss) : base()
+    public HighlightedCodeBlockRenderer(StyleDictionary style, bool inlineCss)
+      : base()
     {
       _style = style;
       _inlineCss = inlineCss;
@@ -20,7 +21,7 @@ namespace Application.Client.Markdown.SyntaxHighlighting
     protected override void Write(HtmlRenderer renderer, CodeBlock codeBlock)
     {
       if (codeBlock is FencedCodeBlock fencedCodeBlock &&
-          Languages.FindById(fencedCodeBlock.Info) is ILanguage codelanguage)
+        Languages.FindById(fencedCodeBlock.Info) is ILanguage codelanguage)
       {
         renderer.Write(GetColorizedCode(codelanguage, GetCodeContent(fencedCodeBlock)));
         return;
@@ -37,8 +38,8 @@ namespace Application.Client.Markdown.SyntaxHighlighting
     private string GetColorizedCode(ILanguage language, string code)
     {
       return _inlineCss ?
-          new HtmlFormatter(_style).GetHtmlString(code, language) :
-          new HtmlClassFormatter(_style).GetHtmlString(code, language);
+        new HtmlFormatter(_style).GetHtmlString(code, language) :
+        new HtmlClassFormatter(_style).GetHtmlString(code, language);
     }
   };
 }

@@ -1,7 +1,7 @@
 ﻿@page "/dotnet"
-@inject IJSRuntime JSRuntime;
+@inherits DotnetBase
 
-@if (_articles is null)
+@if (ArticleFiles is null)
 {
   <div>
     <SpinnerIndicator />
@@ -10,18 +10,6 @@
 else
 {
   <div>
-    <Articles Files=@_articles/>
+    <ArticleCards ArticleFiles=@ArticleFiles/>
   </div>
-}
-
-@code {
-  private List<FileInfo> _articles;
-  private GithubHandler _githubHandler;
-
-  protected override async Task OnInitializedAsync()
-  {
-    _githubHandler = new GithubHandler();
-    await JSRuntime.InvokeVoidAsync("setTitle", ".NET");
-    _articles = await _githubHandler.GetArticlesAsync("dotnet");
-  }
 }

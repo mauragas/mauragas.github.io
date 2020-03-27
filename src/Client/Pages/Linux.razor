@@ -1,7 +1,7 @@
 ﻿@page "/linux"
-@inject IJSRuntime JSRuntime
+@inherits LinuxBase
 
-@if (_articles is null)
+@if (ArticleFiles is null)
 {
   <div>
     <SpinnerIndicator />
@@ -10,17 +10,6 @@
 else
 {
   <div>
-    <Articles Files=@_articles/>
+    <ArticleCards ArticleFiles=@ArticleFiles/>
   </div>
-}
-
-@code {
-  private List<FileInfo> _articles;
-  private GithubHandler _githubHandler = new GithubHandler();
-
-  protected override async Task OnInitializedAsync()
-  {
-    await JSRuntime.InvokeVoidAsync("setTitle", "Linux");
-    _articles = await _githubHandler.GetArticlesAsync("linux");
-  }
 }

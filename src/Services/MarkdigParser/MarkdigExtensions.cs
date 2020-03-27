@@ -1,8 +1,8 @@
 using Markdig;
 using ColorCode.Styling;
-using Application.Client.Markdown.SyntaxHighlighting;
+using Application.Services.MarkdigParser.SyntaxHighlighting;
 
-namespace Application.Client.Markdown
+namespace Application.Services.MarkdigParser
 {
   public static class MarkdigExtensions
   {

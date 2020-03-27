@@ -6,12 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview2.20160.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="3.2.0-preview3.20168.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Client\Application.Client.csproj" />
     <ProjectReference Include="..\Shared\Application.Shared.csproj" />
+    <ProjectReference Include="..\Services\Application.Services.csproj"/>
   </ItemGroup>
 
 </Project>
