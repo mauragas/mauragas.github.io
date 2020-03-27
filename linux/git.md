@@ -4,16 +4,16 @@ Git terminal commands and various configurations.
 
 ## Configuration
 
-Sets the name you want atached to your commit transactions
+Sets the name you want attached to your commit transactions
 
 ```bash
-git config --global user.name "`name`"
+git config --global user.name "name"
 ```
 
-Sets the email you want atached to your commit transactions
+Sets the email you want attached to your commit transactions
 
 ```bash
-git config --global user.email "`email`"
+git config --global user.email "email"
 ```
 
 Change editor to `vim` or Visual Studio Code
@@ -61,13 +61,13 @@ git config --global color.ui auto
 Creates a new local repository with the specified name
 
 ```bash
-git init `project-name`
+git init project-name
 ```
 
 Downloads a project and its entire version history
 
 ```bash
-git clone `url`
+git clone url-address
 ```
 
 ## Branch
@@ -81,31 +81,31 @@ git branch
 Create new branch
 
 ```bash
-git branch `branch`
+git branch branch-name
 ```
 
 Switch to branch
 
 ```bash
-git checkout `branch`
+git checkout branch-name
 ```
 
 Delete specified branch
 
 ```bash
-git branch -d `branch`
+git branch -d branch-name
 ```
 
 Push branch to origin and setup tracking
 
 ```bash
-git push -u origin `branch`
+git push -u origin branch-name
 ```
 
 Set tracking information for this branch
 
 ```bash
-git branch --set-upstream-to=origin/`branch` master
+git branch --set-upstream-to=origin/branch-name master
 git branch --set-upstream-to=origin/master master
 ```
 
@@ -133,28 +133,28 @@ git difftool
 Stage file or all pending files
 
 ```bash
-git add `file`
+git add file-name
 git add *
 ```
 
-Unstage file
+Un-stage file
 
 ```bash
-git reset `file`
-git reset HEAD `file`
+git reset file-name
+git reset HEAD file-name
 ```
 
 Discard changes in working directory
 
 ```bash
-git reset HEAD `file`
-git reset `file`
+git reset HEAD file-name
+git reset file-name
 ```
 
 Commit
 
 ```bash
-git commit -m "`message`"
+git commit -m "message"
 ```
 
 ## Synchronization
@@ -162,34 +162,34 @@ git commit -m "`message`"
 Download all history from origin repository bookmark
 
 ```bash
-git fetch `bookmark`
+git fetch bookmark
 ```
 
 Update the state to the latest remote master state
 
 ```bash
 git pull
-git pull `remote` `branch`
+git pull remote-branch-name branch-name
 ```
 
 Bring changes from specified branch to currently checkout one
 
 ```bash
-git merge `branch`
+git merge branch-name
 ```
 
 Get changes from `bookmark` branch to current local branch
 
 ```bash
-git merge `bookmark`/`branch`
-git merge origin/`branch`
+git merge bookmark/branch-name
+git merge origin/branch-name
 ```
 
 Merge changes and squash commits to master branch _(At third command use `-m` if you want to edit messages from squashed commits)_
 
 ```bash
 git checkout master
-git merge --squash `branch`
+git merge --squash branch-name
 git commit
 ```
 
@@ -197,7 +197,7 @@ Upload local branch commits to origin
 
 ```bash
 git push
-git push `alias` `branch`
+git push alias branch-name
 git push origin master
 ```
 
@@ -238,20 +238,20 @@ git log
 Get version history for a file
 
 ```bash
-git log --follow `file`
+git log --follow file-name
 ```
 
 Show differences between two branches
 
 ```bash
-git diff `branch`..`branch`
-git diff `branch`...`branch`
+git diff branch-name..branch-name
+git diff branch-name...branch-name
 ```
 
 Show metadata and changes of specified commit
 
 ```bash
-git show `commit`
+git show commit-id
 ```
 
 ## Redo
@@ -259,13 +259,13 @@ git show `commit`
 Undo all commits after `commit` while preserving changes locally
 
 ```bash
-git reset `commit`
+git reset commit-id
 ```
 
 Discard all changes back to specified commit
 
 ```bash
-git reset --hard `commit`
+git reset --hard commit-id
 ```
 
 Discard all local changes/commits and reset to origin branch
@@ -279,19 +279,19 @@ git reset --hard origin/master
 Remove file and stage deletion
 
 ```bash
-git rm `file`
+git rm file-name
 ```
 
 Remove file from source control system but keep it locally
 
 ```bash
-git rm --cached `file`
+git rm --cached file-name
 ```
 
 Rename file and prepare it for commit
 
 ```bash
-git mv `file-name` `new-file-name`
+git mv file-name new-file-name
 ```
 
 ## Repository maintenance
