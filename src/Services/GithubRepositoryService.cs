@@ -37,6 +37,19 @@ namespace Application.Services
       return files;
     }
 
+    public async Task<List<ArticleFileInfo>> GetAllArticlesAsync()
+    {
+      var files = await _github.GetAllArticleFilesAsync(BranchName, _fileExtension);
+
+      files.ForEach(file =>
+      {
+        file.Title = GetTitle(file.Content);
+        file.Description = GetDescription(file.Content);
+      });
+
+      return files;
+    }
+
     public async Task<string> GetArticleContentAsync(string pathToFile)
     {
       return await _github.GetArticleFileContent(pathToFile, BranchName);

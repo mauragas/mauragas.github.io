@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Application.Services;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -27,7 +28,7 @@ namespace Application.Client.Pages
     internal IArticleRepository GithubHandler { get; set; }
 
     [Inject]
-    internal IContentHandler ContentHandler { get; set; }
+    internal ContentService ContentHandler { get; set; }
 
     protected override async Task OnInitializedAsync()
     {

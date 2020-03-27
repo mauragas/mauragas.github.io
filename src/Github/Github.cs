@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -38,14 +39,43 @@ namespace Application.Github
             .Where(f => f.Type == ContentType.File &&
                         Path.GetExtension(f.Name) == fileExtension)
             .ToList();
-
+            
         return filesFromGithub.Select(f => new ArticleFileInfo
         {
           FileName = f.Name,
           DownloadUrl = f.DownloadUrl,
           GithubPath = f.Path,
           Content = f.Content
-        }).ToList();
+  }).ToList();
+}
+      catch (Exception e)
+      {
+        throw new FileNotFoundException("Failed to retrieve files from " +
+                                        $"{_repositoryName} repository " +
+                                        $"{branchName} branch. {e}");
+      }
+    }
+
+    public async Task<List<ArticleFileInfo>> GetAllArticleFilesAsync(string branchName, string fileExtension)
+    {
+      try
+      {
+        var archive = await _githubClient.Repository.Content
+             .GetArchive(_repositoryOwner, _repositoryName, ArchiveFormat.Zipball, branchName);
+
+        using (var memoryStream = new MemoryStream(archive))
+        using (var zipArchive = new ZipArchive(memoryStream))
+        {
+          return zipArchive.Entries
+              .Where(file => Path.GetExtension(file.Name) == fileExtension)
+              .Select(file => new ArticleFileInfo
+              {
+                FileName = file.Name,
+                FolderName = GetFolderName(file),
+                GithubPath = GetGithubPath(file),
+                Content = GetContent(file)
+              }).ToList();
+        }
       }
       catch (Exception e)
       {
@@ -69,6 +99,24 @@ namespace Application.Github
                                         $"{_repositoryName} repository " +
                                         $"{branchName} branch. {e}");
       }
+    }
+
+    private static string GetFolderName(ZipArchiveEntry file)
+    {
+      var folderName = file.FullName.Split('/')[1];
+      if (folderName == file.Name)
+        return string.Empty;
+      return folderName;
+    }
+
+    private static string GetContent(ZipArchiveEntry file)
+    {
+      return new StreamReader(file.Open()).ReadToEnd();
+    }
+
+    private static string GetGithubPath(ZipArchiveEntry file)
+    {
+      return file.FullName.Substring(file.FullName.IndexOf("/") + 1);
     }
 
     private HttpMessageHandler GetHttpMessageHandler()
