@@ -1,0 +1,51 @@
+[
+  {
+    "FileName": "README.md",
+    "Path": "",
+    "Title": ".NET on Linux",
+    "Description": "Readme file.",
+    "Content": ""
+  },
+  {
+    "FileName": "git.md",
+    "Path": "linux",
+    "Title": "Git",
+    "Description": "Git terminal commands and various configurations.",
+    "Content": ""
+  },
+  {
+    "FileName": "github.md",
+    "Path": "linux",
+    "Title": "GitHub",
+    "Description": "Various GitHub configurations and terminal commands.",
+    "Content": ""
+  },
+  {
+    "FileName": "my-pop-os-setup.md",
+    "Path": "linux",
+    "Title": "My Pop OS setup",
+    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "Content": ""
+  },
+  {
+    "FileName": "terminal-commands.md",
+    "Path": "linux",
+    "Title": "Terminal commands",
+    "Description": "Various terminal commands for Ubuntu based Linux distributions.",
+    "Content": ""
+  },
+  {
+    "FileName": "blazor.md",
+    "Path": "dotnet",
+    "Title": "Blazor",
+    "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
+    "Content": ""
+  },
+  {
+    "FileName": "terminal-commands.md",
+    "Path": "dotnet",
+    "Title": "Terminal commands",
+    "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
+    "Content": ""
+  }
+]
