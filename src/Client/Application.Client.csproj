@@ -12,7 +12,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Shared\Application.Shared.csproj"/>
-    <ProjectReference Include="..\Github\Application.Github.csproj"/>
     <ProjectReference Include="..\Services\Application.Services.csproj"/>
   </ItemGroup>
 

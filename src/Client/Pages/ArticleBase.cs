@@ -1,7 +1,6 @@
 using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
-using Application.Services;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
@@ -25,10 +24,10 @@ namespace Application.Client.Pages
     internal IMarkdownParser MarkdownParser { get; set; }
 
     [Inject]
-    internal IArticleRepository GithubHandler { get; set; }
+    internal IArticleRepository Repository { get; set; }
 
     [Inject]
-    internal ContentService ContentHandler { get; set; }
+    internal IContentCache ContentCache { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -41,12 +40,12 @@ namespace Application.Client.Pages
 
     internal async Task<string> GetMarkupDocument()
     {
-      var cashedArticle = ContentHandler.Articles
-        .FirstOrDefault(a => a.FolderName == FolderName && a.FileName == FileName);
-      var content = cashedArticle is null
-        ? await GithubHandler.GetArticleContentAsync($"{FolderName}/{FileName}")
-        : cashedArticle.Content;
-      return MarkdownParser.ParseContentToHtml(content);
+      var cashedArticle = ContentCache.Articles
+        .FirstOrDefault(a => a.Path == FolderName && a.FileName == FileName);
+      var pathToFile = System.IO.Path.Combine(FolderName, FileName);
+      if (string.IsNullOrWhiteSpace(cashedArticle.Content))
+        cashedArticle.Content = await Repository.GetArticleContentAsync(pathToFile);
+      return MarkdownParser.ParseContentToHtml(cashedArticle.Content);
     }
   }
 }
