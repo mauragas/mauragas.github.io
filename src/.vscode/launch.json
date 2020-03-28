@@ -3,14 +3,14 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": ".NET Core Launch (web)",
+      "name": ".NET Core Launch Application (web)",
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/Server/bin/Debug/netcoreapp3.1/Application.Server.dll",
+      "program": "${workspaceFolder}/Application/Server/bin/Debug/netcoreapp3.1/Application.Server.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/Server",
+      "cwd": "${workspaceFolder}/Application/Server",
       "stopAtEntry": false,
       // Enable launching a web browser when ASP.NET Core starts. For more information: https://aka.ms/VSCode-CS-LaunchJson-WebBrowser
       "serverReadyAction": {
@@ -23,6 +23,19 @@
       "sourceFileMap": {
         "/Views": "${workspaceFolder}/Views"
       }
+    },
+    {
+      "name": ".NET Core Launch ArticleData (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build-article-data-console",
+      // If you have changed target frameworks, make sure to update the program path.
+      "program": "${workspaceFolder}/ArticleData/Console/bin/Debug/netcoreapp3.1/ArticleData.Console.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
+      "console": "internalConsole",
+      "stopAtEntry": false
     },
     {
       "name": ".NET Core Attach",

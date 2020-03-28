@@ -7,7 +7,19 @@
       "type": "process",
       "args": [
         "build",
-        "${workspaceFolder}/Server/Application.Server.csproj",
+        "${workspaceFolder}/Application/Server/Application.Server.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "build-article-data-console",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/ArticleData/Console/ArticleData.Console.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -19,7 +31,7 @@
       "type": "process",
       "args": [
         "publish",
-        "${workspaceFolder}/Server/Application.Server.csproj",
+        "${workspaceFolder}/Application/Server/Application.Server.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
@@ -32,7 +44,7 @@
       "args": [
         "watch",
         "run",
-        "${workspaceFolder}/Server/Application.Server.csproj",
+        "${workspaceFolder}/Application/Server/Application.Server.csproj",
         "/property:GenerateFullPaths=true",
         "/consoleloggerparameters:NoSummary"
       ],
