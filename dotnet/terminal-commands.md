@@ -25,7 +25,7 @@ dotnet run --urls="http://localhost:10000"
 Create new console project
 
 ```bash
-dotnet new console -o `project-name`
+dotnet new console -o project-name
 ```
 
 Create solution file
@@ -37,7 +37,7 @@ dotnet new sln
 Add project to solution file
 
 ```bash
-dotnet sln `solution-file.sln` add `./path/to/project/file`
+dotnet sln solution-file.sln add ./path/to/project.csproj
 ```
 
 ## Build and publish
@@ -62,7 +62,7 @@ Specify to build single file in project file
 Publish application using profile file
 
 ```bash
-dotnet build MyPreject.csproj /p:DeployOnBuild=true /p:PublishProfile=`./path/to/profile/file`
+dotnet build project.csproj /p:DeployOnBuild=true /p:PublishProfile=./path/to/profile-file
 ```
 
 ## Templates
