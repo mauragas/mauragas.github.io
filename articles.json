@@ -1,12 +1,5 @@
 [
   {
-    "FileName": "README.md",
-    "Path": "",
-    "Title": ".NET on Linux",
-    "Description": "Readme file.",
-    "Content": ""
-  },
-  {
     "FileName": "git.md",
     "Path": "linux",
     "Title": "Git",
