@@ -1,6 +1,7 @@
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Services.Interfaces;
+using Application.Shared.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 
@@ -8,7 +9,7 @@ namespace Application.Client.Pages
 {
   public class IndexBase : ComponentBase
   {
-    internal string MarkDownDocument { get; set; }
+    internal List<ArticleFileInfo> ArticleFiles { get; set; }
 
     [Inject]
     internal IJSRuntime JSRuntime { get; set; }
@@ -25,11 +26,7 @@ namespace Application.Client.Pages
     protected override async Task OnInitializedAsync()
     {
       await JSRuntime.InvokeVoidAsync("setTitle", ".NET on Linux");
-      var fileName = "README.md";
-      var readmeFile = ContentCache.Articles.First(a => a.FileName == fileName);
-      if (string.IsNullOrWhiteSpace(readmeFile.Content))
-        readmeFile.Content = await Repository.GetArticleContentAsync(fileName);
-      MarkDownDocument = MarkdownParser.ParseContentToHtml(readmeFile.Content);
+      ArticleFiles = ContentCache.Articles;
     }
   }
 }

@@ -1,7 +1,9 @@
 ﻿@page "/"
 @inherits IndexBase
 
-@if (MarkDownDocument == null)
+<GithubButtons />
+
+@if (ArticleFiles is null)
 {
   <div class="col">
     <SpinnerIndicator />
@@ -9,9 +11,7 @@
 }
 else
 {
-  <div class="col">
-    @((MarkupString)MarkDownDocument)
+  <div>
+    <ArticleCards ArticleFiles=@ArticleFiles/>
   </div>
 }
-
-<GithubButtons />
