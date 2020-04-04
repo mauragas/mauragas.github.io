@@ -40,5 +40,12 @@
     "Title": "Terminal commands",
     "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
     "Content": ""
+  },
+  {
+    "FileName": "solid-principles.md",
+    "Path": "dotnet",
+    "Title": "SOLID Principles",
+    "Description": "Five object orient programming principles which should help you create more easily testable and maintainable solutions.",
+    "Content": ""
   }
 ]
