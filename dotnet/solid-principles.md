@@ -1,7 +1,6 @@
 # SOLID Principle
 
 SOLID is acronym for 5 object orient programming principles which should help you create more easily testable and maintainable solutions.
-
 When you are considering whether to apply any of SOLID principles, you should practice Pain Driven Development (PDD). You should start writing simplest technique possible to solve the problem, you should not try apply all principles at the beginning of development, avoid premature optimization of your application design. After application grows you should search for places in application where it is "painful" to work with and therefore apply SOLID principles to relief the "pain" and improve design. The referred "pain" is difficulty of testing, code coupling, duplication and etc.
 
 ## Single Responsibility Principle (SRP)
@@ -20,7 +19,7 @@ Examples of responsibilities:
 
 - `Validation` - how input is validated.
 - `Persistence` - data which ensures application persistence.
-- `Business logic`- how business requirements are ensured.
+- `Business logic` - how business requirements are ensured.
 - `Logging` - various records of application process.
 
 Each responsibly during software development can change at different times, for example persistence can change from using files to database.
@@ -53,18 +52,18 @@ Benefits:
 - Simpler code due to reduced count of conditional operations.
 - We can ignore this principle in bug fixes when it is necessary.
 
-You should balance abstraction and concreteness, because abstractions adds complexity. When module does one specific thing, it does not have abstraction, it is fully concrete. Module should have flexibility, therefore it can be extended in the process of maintainability and when new requirements are introduced. We should predict where code in the future could be extended and apply abstraction as needed. But we should not implement abstractions in all possible places, because code can become too complex and difficult to work with.
+You should balance abstraction and concreteness, because abstractions adds complexity. When module does one specific thing, it does not have abstraction, it is fully concrete. Module should have flexibility, therefore it can be extended in the process of maintainability when new requirements are introduced. We should predict where code in the future could be extended and apply abstraction as needed. But we should not implement abstractions in all possible places, because code can become too complex and difficult to work with.
 
 When we use `new` keyword we are glueing variables to concrete implementation.
 
 Approaches for applying OCP:
 
-- Parameters - passing different arguments to the methods we can change its behavior.
+- Parameters - by passing different arguments to the methods we can change its behavior.
 - Inheritance - you can change behavior using child class. Therefore you can `override` parent `virtual` methods or add your own.
 - Composition and injection - logic is provided by another type class is referencing. Instead hard coding references, it can be provided throw dependency injection.
 - Extension methods - ability to add additional methods to types without modifying types itself.
 
-Prefer implementing new features in new classes, especially in large legacy code base. Because class is new, nothing depends on it and you can design it to suit the problem without touching existing code, making it fully testable and follow SRP.
+Prefer implementing new features in new classes, especially in large legacy code base. If class is new, nothing depends on it and you can design it to suit the problem without touching existing code, making it fully testable and follow SRP.
 
 Process steps of implementing OCP:
 
@@ -79,13 +78,13 @@ Subtypes must be substitutable for their base types.
 Basic object oriented design often describes two relationships:
 
 - Relationship `is-a` (e.g. eagle is a bird)
-- Relationship `has-a` (e.g. car has a engine)
+- Relationship `has-a` (e.g. car has the engine)
 
 LSP states that the `is-a` relationship is insufficient and should be replaced by `is-substitutable-for`.
 
 ### Rectangle and square problem
 
-A rectangle has four sides and four right angles, but square have all four sides equal length. In geometry we say that square `is a` rectangle. Therefore we can create create class **Square** which inherits from **Rectangle**. We can ensure square that hight and width are equal when one value set, other is set to the same value too. The problem occurs when we expect to work with rectangle but square instance is used instead:
+A rectangle has four sides and four right angles, but square have all four sides equal length. In geometry we say that square `is a` rectangle. Therefore we can create create class **Square** which inherits from **Rectangle**. We can ensure square that height and width are equal when one value set, other is set to the same value too. The problem occurs when we expect to work with rectangle but square instance is used instead:
 
 ```csharp
 Rectangle rectangle = new Square();
@@ -96,7 +95,7 @@ Assert.That(AreaCalculator.GetArea(rectangle), Is.EqualTo(8));
 // Test fails because actual calculated area is 16
 ```
 
-In given example it is obvious that we instantiating Square with the `new` keyword, but in case we pass to the method parameter Square when we expect Rectangular, it will be not so clear where the problem is. Current design approach breaks **invariants** for rectangles that its sides are independent, where square sides must be equal. This violates LSP, the square is not substitutable for rectangle everywhere rectangle is used.
+In given example it is obvious that we instantiating Square with the `new` keyword, but in case we pass to the method parameter Square object when we expect Rectangular, it will be not so clear where the problem is. Current design approach breaks **invariants** for rectangles that its sides are independent, where square sides must be equal. This violates LSP, the square is not substitutable for rectangle everywhere rectangle is used.
 
 Solution to this problem would be:
 
@@ -105,18 +104,18 @@ Solution to this problem would be:
 
 ### LSP violations
 
-- In case of type checking with keywords `is` or `as` in polymorphic code. Solution could be to dedicate separate class to perform specific action or write common method for all classes (e.g. ToString() method)
-- Null checks, which is similar to type checking. Solution could be to use null object design pattern.
+- In case of type checking with keywords `is` or `as` in polymorphic code. Solution could be to dedicate separate class to perform specific action or write common method for all classes (e.g. ToString() method).
+- Null checks, which is similar to type checking. Solution could be to use **null object design pattern**.
 - Exception thrown from methods when is not implemented (e.g. NotImplementedException). Happens when interface or base class is not fully supported, therefore it is not fully substitutable for where its interface or base class can be called. This usually violates ISP too.
 
 ## Interface Segregation Principle (ISP)
 
-Describes how we should design and use interfaces in our applications. Clients should not be forced to depend on methods they do not use. You should you small cohesive interfaces instead of large ones.
+Describes how we should design and use interfaces in our applications. Clients should not be forced to depend on methods they do not use. You should use small cohesive interfaces instead of large ones.
 
 ## Interface and clients
 
-Interface is public or accessible interface of a class, it is whatever can be accessed by client code working with an instance of that type.
-Client is a code which is interacting with the interface (plugin for interface).
+Interface is public interface of a class, it is whatever can be accessed by client code working with an instance of that type.
+Client (plugin for interface) is a code which is interacting with the interface.
 
 ## Detecting violations
 
@@ -126,7 +125,7 @@ Indications of ISP violations:
 
 - Large interfaces.
 - Not implemented exceptions thrown from the methods.
-- Code uses only small part of the large interface.
+- Client code uses only small part of the large interface.
 
 Interface segregation principle is related to LSP, large interface full implementation is harder, therefore causing partial implementation and thus not be fully substitutable for their base type.
 ISP also relies on cohesion and SRP, small and cohesive interfaces are more preferable.
@@ -167,7 +166,7 @@ Low level dependency examples:
 - Configurations details
 - System clock
 
-Hidden direct dependencies usually static calls and usage of `new` keyword, direct use of low level dependencies. These dependencies introduces tight coupling and duplications. Because it is not injected into class it is much harder to unit test.
+Hidden direct dependencies usually are static calls, usage of `new` keyword and direct use of low level dependencies. These dependencies introduces tight coupling and duplications. Because it is not injected into class it is much harder to unit test.
 
 ### Explicit dependencies principle
 
