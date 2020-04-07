@@ -1,5 +1,13 @@
 # Design patterns
 
+Design patterns are split into three categories:
+
+- Creational -
+- Structural -
+- Behavior -
+
+
+
 ## Adapter
 
 ## Bridge
@@ -69,6 +77,60 @@ Advantage of having null object value is that we can return it (e.g NullEmployee
 ## Observer
 
 ## Prototype
+
+Prototype is creational design pattern. It defines prototype objects which can make deep copy of itself. It is used when it is easier to copy an existing object instead of fully initializing new one. Motivation for this pattern is that complicated object (e.g. Mobile phones) usually are not designed from scratch but from existing prototype, existing design usually is reiterated with new versions or different variations. Prototype is partially or fully constructed object. We can make a copy the prototype and customize it later. To make copying more convenient we can provide Factory design pattern.
+
+- Shallow copy - copying object reference.
+- Deep copy - copying object and all its references, therefore changing a copy does not change original object.
+
+### Copy constructor
+
+We can define separate constructor which takes same object through parameter to make deep copy of itself:
+
+```csharp
+class Car
+{
+  public Car(Car car)
+  {
+    // Map each values
+  }
+}
+```
+
+In this approach we will need to create for each used class a copy constructor and map each value manually.
+
+### Using interface
+
+We can create own interface which explicitly says to implement deep copy method:
+
+```csharp
+public interface IPrototype<T>
+{
+  T DeepCopy();
+}
+```
+
+In this approach we will still need manually map each values and implement interface for each used class.
+
+### Serialization
+
+To make deep copy of an object we can use serialization, therefore we will not need to depend on copy constructor or interface. To make serialization to work in any object we can create extension method:
+
+```csharp
+public static class Extensions
+{
+  public static T DeepCopy<T>(this T self)
+  {
+    using var stream = new MemoryStream();
+    var formatter = new BinaryFormatter();
+    formatter.Serialize(stream, self);
+    stream.Seek(0, SeekOrigin.Begin);
+    return (T)formatter.Deserialize(stream);
+  }
+}
+```
+
+Any class what you want to serialize you need to make it serializable with attribute `[Serializable]`. To avoid using this attribute you can use different formatter like XmlFormatter, but in this case you will need to define default empty constructors for each class.
 
 ## Proxy
 
