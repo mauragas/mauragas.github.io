@@ -2,11 +2,9 @@
 
 Design patterns are split into three categories:
 
-- Creational -
-- Structural -
-- Behavior -
-
-
+- Creational - instead of instantiating objects with `new` operator, design pattern provides a way to hide creation logic. It gives controls how objects are created for a given use case.
+- Structural - utilizes class and object composition through inheritance.
+- Behavior - utilizes communication between objects.
 
 ## Adapter
 
@@ -171,6 +169,88 @@ Then we can get singleton type of ISingletonClass anywhere through constructor p
 ## Specification
 
 ## State
+
+Design pattern `state` is about the condition of something variable, object behavior is determined by its state.
+
+- State - defines state of an object at any given time (e.g. button is `on` or `off`).
+- Trigger - it is something what starts the state transition in a state machine.
+- Transition - change of state caused by event.
+- Event - it is action which is performed by state machine when particular state is completed.
+- Guard condition - it is condition which validates the transition.
+- State machine - construct which manages states and transitions (e.g. class).
+
+This pattern solves two design challenges:
+
+- How can an object change its state behavior when its internal state changes.
+- How can state specific behaviors can be defined so that state can be added without changing the behavior of existing state.
+
+Changes in state can be explicit or in response to event.
+
+You can define:
+
+- Sate entry or exit behavior.
+- Transition event caused by action.
+- Guard condition which is enabling or disabling transaction.
+- Default action when there is no event for transaction.
+
+### Constructing state machine
+
+For constructing state machine you can use enums which defines button state and triggers:
+
+```csharp
+public enum State
+{
+  On,
+  Off,
+  // ...
+}
+public enum Trigger
+{
+  Toggle
+  // ...
+}
+```
+
+Using enums and dictionary with rules you can construct basic state machine class:
+
+```csharp
+public class StateMachine
+{
+  private static Dictionary<State, List<(Trigger, State)>> Rules
+    = new Dictionary<State, List<(Trigger, State)>>
+    {
+      [State.Off] = new List<(Trigger, State)>
+      {
+        (Trigger.Toggle, State.On)
+      },
+      [State.On] = new List<(Trigger, State)>
+      {
+        (Trigger.Toggle, State.Off)
+      }
+    };
+}
+```
+
+### State machine libraries
+
+Usually to construct state machine you can utilize existing libraries like:
+
+- [Stateless](www.nuget.org/packages/Stateless)
+- [NState](www.nuget.org/packages/NState)
+- [Automatonymous](www.nuget.org/packages/Automatonymous)
+
+Example of using **Stateless** library:
+
+```csharp
+var stateMachine = new StateMachine<State, Trigger>(State.Off);
+
+// Specify a valid state transition based on a trigger
+stateMachine.Configure(State.Off).Permit(Trigger.Toggle, State.On);
+stateMachine.Configure(State.On).Permit(Trigger.Toggle, State.Off);
+
+// Start transaction (trigger is fired)
+stateMachine.Fire(Trigger.Toggle);
+```
 
 ## Strategy
 
