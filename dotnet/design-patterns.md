@@ -231,6 +231,70 @@ public class StateMachine
 }
 ```
 
+### Constructing state machine using abstract classes
+
+We can achieve it by encapsulating state specific behavior within separate state objects, by using a class to delegate the execution of its state specific behavior to one state object at a time. It requires structure code using abstract and concrete classes as a states.
+
+It contains three components:
+
+- **Context** - is a class which maintains an instance of a current state and can set a state. It maintains reference to one of the concrete states as its current state through abstract state class.
+- **Abstract state** - abstract class which encapsulates state specific behavior.
+- **Concrete state** - any number of subclasses of abstract class which implements behavior specific to a particular state of context. Concrete state class derives from abstract state class and implements specific behavior.
+
+To start implementing state pattern approach you need to list of possible states, conditions for transitioning between those states and initial state.
+
+#### Example of button state machine
+
+To construct state pattern for button we can define one class for context, one abstract class and two concrete state classes.
+
+Context class:
+
+```csharp
+public class ButtonContext
+{
+  private ButtonState _currentState;
+
+  public ButtonContext()
+  {
+    // Initial state is set to off
+    TransitionToState(new OffState());
+  }
+  public void TransitionToState(ButtonState state)
+  {
+    _currentState = state;
+    _currentState.Toggle(this);
+  }
+}
+```
+
+Abstract state class:
+
+```csharp
+public abstract class ButtonState
+{
+  public abstract void Toggle(ButtonContext button);
+}
+```
+
+Concrete state classes:
+
+```csharp
+public class OffState : ButtonState
+{
+  public override void Toggle(ButtonContext button)
+  {
+    // Logic for On state
+  }
+}
+  public class OnState : ButtonState
+{
+  public override void Toggle(ButtonContext button)
+  {
+    // Logic for Off state
+  }
+}
+```
+
 ### State machine libraries
 
 Usually to construct state machine you can utilize existing libraries like:
