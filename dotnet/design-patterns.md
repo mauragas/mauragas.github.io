@@ -318,6 +318,82 @@ stateMachine.Fire(Trigger.Toggle);
 
 ## Strategy
 
+Main goal of the pattern is that we can select implementation at runtime (dynamic) or compile time (static) based on input without having to extend the class, therefore you can partially define behavior of the system and later change it. It is one of the most commonly used pattern.
+
+Pattern can be identified by three characteristics:
+
+- Context - has a reference to a strategy and can invoke it.
+- IStrategy - definition of interface (contract) for the strategy.
+- Strategy - implementation of the strategy.
+
+Strategy interface is used to be able easily extend application with additional strategies without affecting current implementations.
+
+### Example
+
+To utilize strategy pattern as example we can create a **list** strategies for two different formats **markdown** and **html**.
+
+Strategy interface:
+
+```csharp
+public interface IListStrategy
+{
+  string Append(string existingList, string item);
+}
+```
+
+Concrete implementations of interface for **markdown** and **html** strategies:
+
+```csharp
+public class MarkdownListStrategy : IListStrategy
+{
+  public string Append(string existingList, string item)
+  {
+    return $"{existingList}{Environment.NewLine} * {item}";
+  }
+}
+
+public class HtmlListStrategy : IListStrategy
+{
+  public string Append(string existingList, string item)
+  {
+    // Not a full implementation for simplicity of example
+    return $"{existingList}{Environment.NewLine}<li>{item}</li>";
+  }
+}
+```
+
+Static strategy context implementation:
+
+```csharp
+public class TextProcessorContext<ListStrategy>
+  where ListStrategy : IListStrategy, new()
+{
+  private string _list = string.Empty;
+  private IListStrategy _listStrategy = new ListStrategy();
+
+  public void AppendToList(IEnumerable<string> items)
+  {
+    items.ToList().ForEach(item => _
+      list = _listStrategy.Append(_list, item));
+  }
+
+  public override string ToString()
+  {
+    return _list;
+  }
+}
+```
+
+Context class implementation can be changed to dynamic composition by using **dependency injection** when concrete strategy implementation is injected at runtime instead of using generic class.
+
+Example of usage:
+
+```csharp
+var textProcessor = new TextProcessorContext<MarkdownListStrategy>();
+textProcessor.AppendToList(new[] { "one", "two", "three" });
+WriteLine(textProcessor);
+```
+
 ## Template Method
 
 ## Visitor
