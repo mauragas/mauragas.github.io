@@ -1,12 +1,15 @@
-﻿using System;
+﻿using System.Threading.Tasks;
+using ArticleData.Generator;
 
 namespace ArticleData.Console
 {
-    class Program
+  class Program
+  {
+    static async Task Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            System.Console.WriteLine("Hello World!");
-        }
+      var generator = new GithubDataGenerator();
+      var articleData = new Articles(generator);
+      await articleData.UpdateAsync();
     }
+  }
 }
