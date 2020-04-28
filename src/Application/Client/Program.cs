@@ -1,9 +1,10 @@
-﻿using System.Threading.Tasks;
-using Application.Services;
-using Application.Services.Interfaces;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net.Http;
+using Application.Services.Interfaces;
+using Application.Services;
 
 namespace Application.Client
 {
@@ -14,7 +15,7 @@ namespace Application.Client
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
       AddServicesToDependencyContainer(builder);
       builder.RootComponents.Add<App>("app");
-      builder.Services.AddBaseAddressHttpClient();
+      builder.Services.AddTransient(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
       var host = builder.Build();
       await InitializeServicesAsync(host);
       await host.RunAsync();
@@ -30,7 +31,6 @@ namespace Application.Client
 
     private static async Task InitializeServicesAsync(WebAssemblyHost host)
     {
-      var httpClient = host.Services.GetRequiredService<HttpClient>();
       var repositoryService = host.Services.GetRequiredService<IArticleRepository>();
       (repositoryService as GithubRepositoryService).Initialize(
         "https://raw.githubusercontent.com/mauragas/Mauragas.github.io/articles/",
