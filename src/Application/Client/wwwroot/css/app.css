@@ -1,8 +1,8 @@
-﻿@import url("open-iconic/font/css/open-iconic-bootstrap.min.css");
+﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html,
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a,
@@ -38,7 +38,7 @@ app {
   justify-content: flex-end;
 }
 
-.main .top-row > a,
+.main .top-row>a,
 .main .top-row .btn-link {
   white-space: nowrap;
   margin-left: 1.5rem;
@@ -108,7 +108,7 @@ app {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.valid.modified:not([type="checkbox"]) {
+.valid.modified:not([type=checkbox]) {
   outline: 1px solid #26b050;
 }
 
@@ -171,7 +171,7 @@ app {
     top: 0;
   }
 
-  .main > div {
+  .main>div {
     padding-left: 2rem !important;
     padding-right: 1.5rem !important;
   }
