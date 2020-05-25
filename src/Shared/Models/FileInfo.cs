@@ -10,5 +10,6 @@ namespace Application.Shared.Models
     public string Description { get; set; }
     public string Content { get; set; }
     public DateTimeOffset LatestUpdate { get; set; }
+    public string LatestAuthor { get; set; }
   }
 }

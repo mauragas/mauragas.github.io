@@ -9,7 +9,7 @@ namespace Application.Services
   {
     public List<ArticleFileInfo> Articles { get; set; }
 
-    private IArticleRepository _repository;
+    private readonly IArticleRepository _repository;
 
     public ContentCacheService(IArticleRepository articleRepository)
     {

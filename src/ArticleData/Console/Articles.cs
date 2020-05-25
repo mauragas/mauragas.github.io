@@ -1,5 +1,7 @@
 using System.Threading.Tasks;
 using ArticleData.Generator;
+using System.Text.Json;
+using System.IO;
 
 namespace ArticleData.Console
 {
@@ -10,10 +12,17 @@ namespace ArticleData.Console
     {
       _generator = generator;
     }
-    public async Task UpdateAsync()
+    public async Task UpdateAsync(string rootPath, string fileName)
     {
-      var articles = await _generator.GetArticlesAsync();
+      var articles = _generator.GetArticles(rootPath);
 
+      var options = new JsonSerializerOptions
+      {
+        WriteIndented = true,
+      };
+
+      using var fileStream = File.Create(fileName);
+      await JsonSerializer.SerializeAsync(fileStream, articles, options).ConfigureAwait(false);
     }
   }
 }
