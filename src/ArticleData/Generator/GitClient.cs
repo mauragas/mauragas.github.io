@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 using LibGit2Sharp;
 
-namespace ArticleData.GitClient
+namespace ArticleData.Generator
 {
   public class GitClient : IDisposable
   {

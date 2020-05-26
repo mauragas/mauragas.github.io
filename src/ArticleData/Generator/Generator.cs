@@ -8,9 +8,12 @@ namespace ArticleData.Generator
   {
     public List<ArticleFileInfo> GetArticles(string path)
     {
-      var folder = Path.GetDirectoryName(path);
-      var articleFiles = GetArticles(folder, "*.md");
-      var gitClient = new GitClient.GitClient(folder);
+      if (!Directory.Exists(path))
+        path = Path.GetDirectoryName(path);
+
+      var articleFiles = GetArticles(path, "*.md");
+      articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
+      var gitClient = new GitClient(path);
       foreach (var file in articleFiles)
       {
         gitClient.GetFileInfo(file);

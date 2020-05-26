@@ -19,9 +19,13 @@ namespace ArticleData.Console
       {
         _appConfiguration = new AppConfiguration(_log, args);
 
-        string repoPath = Environment.CurrentDirectory;
-        var generator = new Generator.Generator();
-        var articleData = new Articles(generator);
+#if !DEBUG
+        System.Console.WriteLine("Press 'y' to continue.");
+        if (System.Console.ReadKey().Key != ConsoleKey.Y)
+            return;
+        System.Console.WriteLine();
+#endif
+        var articleData = new Articles(new Generator.Generator());
         await articleData.UpdateAsync(
           _appConfiguration.ConfigurationOptions.PathToRepository,
           _appConfiguration.ConfigurationOptions.PathToOutputFile)
@@ -29,8 +33,7 @@ namespace ArticleData.Console
       }
       catch (Exception e)
       {
-        _log?.Fatal("Application failed: {Message}", e.Message);
-        _log?.Verbose(e, "Application failed with unhandled exception.");
+        _log?.Fatal("Application failed: {Message}", e);
       }
     }
   }
