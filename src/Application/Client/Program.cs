@@ -1,23 +1,24 @@
-﻿using System.Threading.Tasks;
-using Application.Services;
-using Application.Services.Interfaces;
+﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using System.Net.Http;
+using Application.Services.Interfaces;
+using Application.Services;
 
 namespace Application.Client
 {
-  public class Program
+  public static class Program
   {
     public static async Task Main(string[] args)
     {
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
       AddServicesToDependencyContainer(builder);
       builder.RootComponents.Add<App>("app");
-      builder.Services.AddBaseAddressHttpClient();
+      builder.Services.AddTransient(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
       var host = builder.Build();
-      await InitializeServicesAsync(host);
-      await host.RunAsync();
+      await InitializeServicesAsync(host).ConfigureAwait(false);
+      await host.RunAsync().ConfigureAwait(false);
     }
 
     private static void AddServicesToDependencyContainer(WebAssemblyHostBuilder builder)
@@ -27,17 +28,15 @@ namespace Application.Client
       builder.Services.AddSingleton<IContentCache, ContentCacheService>();
     }
 
-
     private static async Task InitializeServicesAsync(WebAssemblyHost host)
     {
-      var httpClient = host.Services.GetRequiredService<HttpClient>();
       var repositoryService = host.Services.GetRequiredService<IArticleRepository>();
-      (repositoryService as GithubRepositoryService).Initialize(
+      (repositoryService as GithubRepositoryService)?.Initialize(
         "https://raw.githubusercontent.com/mauragas/Mauragas.github.io/articles/",
         "articles.json");
 
-      var contentHandler = host.Services.GetRequiredService<IContentCache>();
-      await (contentHandler as ContentCacheService).InitializeAsync();
+      var contentHandler = host.Services.GetRequiredService<IContentCache>() as ContentCacheService;
+      await contentHandler.InitializeAsync().ConfigureAwait(false);
     }
   }
 }

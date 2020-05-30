@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Application.Services.Interfaces;
 using Application.Shared.Models;
-using Microsoft.AspNetCore.Components;
+using System.Text.Json;
 
 namespace Application.Services
 {
@@ -12,7 +12,7 @@ namespace Application.Services
   {
     private Uri _urlToArticleInfoFile;
     private Uri _rootUrl;
-    private HttpClient _httpClient;
+    private readonly HttpClient _httpClient;
 
     public GithubRepositoryService(HttpClient httpClient)
     {
@@ -26,12 +26,13 @@ namespace Application.Services
 
     public async Task<List<ArticleFileInfo>> GetAllArticlesAsync()
     {
-      return await _httpClient.GetJsonAsync<List<ArticleFileInfo>>(_urlToArticleInfoFile.AbsoluteUri);
+      var result = await _httpClient.GetStringAsync(_urlToArticleInfoFile.AbsoluteUri).ConfigureAwait(false);
+      return JsonSerializer.Deserialize<List<ArticleFileInfo>>(result);
     }
 
     public async Task<string> GetArticleContentAsync(string pathToFile)
     {
-      return await _httpClient.GetStringAsync(new Uri(_rootUrl, pathToFile));
+      return await _httpClient.GetStringAsync(new Uri(_rootUrl, pathToFile)).ConfigureAwait(false);
     }
   }
 }
