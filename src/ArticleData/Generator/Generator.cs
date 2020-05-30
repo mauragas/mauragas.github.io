@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Application.Shared.Models;
@@ -15,9 +16,7 @@ namespace ArticleData.Generator
       articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
       var gitClient = new GitClient(path);
       foreach (var file in articleFiles)
-      {
         gitClient.GetFileInfo(file);
-      }
       return articleFiles;
     }
 
@@ -31,9 +30,12 @@ namespace ArticleData.Generator
         articles.Add(new ArticleFileInfo
         {
           FileName = file.Name,
-          Path = file.FullName.Replace(path + '/', string.Empty),
+          Path = file.FullName.Replace($"{path}/", string.Empty).Replace($"/{file.Name}", string.Empty),
           Description = GetDescription(content),
-          Title = GetTitle(content)
+          Title = GetTitle(content),
+          PictureUrl = GetPictureUrl(content),
+          Content = string.Empty
+
         });
       }
       return articles;
@@ -48,7 +50,7 @@ namespace ArticleData.Generator
         {
           if (!line.StartsWith('#'))
           {
-            line = reader.ReadLine();
+            line = reader.ReadLine()?.Trim();
             continue;
           }
           return line.Replace("#", string.Empty).Trim();
@@ -69,12 +71,43 @@ namespace ArticleData.Generator
             line.StartsWith('!') ||
             line.StartsWith('['))
           {
-            line = reader.ReadLine();
+            line = reader.ReadLine()?.Trim();
             continue;
           }
-          return line.Trim();
+          return line;
         }
       }
+      return string.Empty;
+    }
+
+    private static string GetPictureUrl(string content)
+    {
+      using (var reader = new StringReader(content))
+      {
+        var line = reader.ReadLine()?.Trim();
+        while (line != null)
+        {
+          if (line.StartsWith("![") || line.StartsWith("[!["))
+          {
+            var url = GetUrl(line);
+            if (!string.IsNullOrWhiteSpace(url))
+              return url;
+          }
+          line = reader.ReadLine();
+        }
+      }
+      return string.Empty;
+    }
+
+    private static string GetUrl(string line)
+    {
+      int startIndex = line.IndexOf('(');
+      int length = line.IndexOf(')') - startIndex - 1;
+      var url = line.Substring(startIndex + 1, length);
+
+      if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
+        return url;
+
       return string.Empty;
     }
   }

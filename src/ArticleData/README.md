@@ -2,11 +2,18 @@
 
 ## Deployment for Ubuntu
 
+Build `.deb` installation file:
+
 ```bash
-dotnet clean
-dotnet restore
-dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.18.04-x64
+dotnet clean &&
+dotnet restore &&
+dotnet publish -c Release -f netcoreapp3.1 -r ubuntu.18.04-x64 &&
 dotnet deb --no-restore -c Release -f netcoreapp3.1 -r ubuntu.18.04-x64
+```
+
+Install:
+
+```bash
 sudo dpkg -i ./bin/Release/netcoreapp3.1/ubuntu.18.04-x64/ArticleData.1.0.0.ubuntu.18.04-x64.deb
 ```
 

@@ -15,11 +15,11 @@ namespace ArticleData.Generator
       _repository = new Repository(repoPath);
     }
 
-    public void GetFileInfo(ArticleFileInfo pathToFile)
+    public void GetFileInfo(ArticleFileInfo articleFileInfo)
     {
-      var commit = _repository.Commits.QueryBy(pathToFile.Path).Take(1).Last().Commit;
-      pathToFile.LatestUpdate = commit.Author.When;
-      pathToFile.LatestAuthor = commit.Author.Name;
+      var commit = _repository.Commits.QueryBy(articleFileInfo.Path).Take(1).Last().Commit;
+      articleFileInfo.LatestUpdate = commit.Author.When;
+      articleFileInfo.LatestAuthor = commit.Author.Name;
     }
 
     public void Dispose()

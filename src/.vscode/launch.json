@@ -7,7 +7,9 @@
       "type": "coreclr",
       "request": "launch",
       "program": "dotnet",
-      "args": ["run"],
+      "args": [
+        "run"
+      ],
       "cwd": "${workspaceFolder}/Application/Client",
       "env": {
         "ASPNETCORE_ENVIRONMENT": "Development"
@@ -29,7 +31,7 @@
       "request": "launch",
       "preLaunchTask": "build-article-data-console",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/ArticleData/Console/bin/Debug/netcoreapp3.1/ArticleData.Console.dll",
+      "program": "${workspaceFolder}/ArticleData/Console/bin/Debug/netcoreapp3.1/ArticleData.dll",
       "args": [],
       "cwd": "${workspaceFolder}",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
