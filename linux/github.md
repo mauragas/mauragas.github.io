@@ -2,6 +2,8 @@
 
 Various GitHub configurations and terminal commands.
 
+![github](https://images.unsplash.com/photo-1590595906931-81f04f0ccebb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
+
 ## Access token
 
 Set local repository to be able to access origin with generated token
