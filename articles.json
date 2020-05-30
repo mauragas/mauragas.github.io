@@ -5,7 +5,7 @@
     "Title": "Blazor",
     "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-05-30T22:16:21+02:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Blazor.png"
   },
@@ -15,9 +15,19 @@
     "Title": ".NET terminal commands",
     "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-05-30T22:16:21+02:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/dotnet-terminal-2.png"
+  },
+  {
+    "FileName": "design-patterns.md",
+    "Path": "dotnet",
+    "Title": "Design patterns",
+    "Description": "Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:16:21+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1350\u0026q=80"
   },
   {
     "FileName": "my-pop-os-setup.md",
