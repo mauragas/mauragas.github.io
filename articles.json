@@ -1,44 +1,62 @@
 [
   {
-    "FileName": "git.md",
-    "Path": "linux",
-    "Title": "Git",
-    "Description": "Git terminal commands and various configurations.",
-    "Content": ""
+    "FileName": "blazor.md",
+    "Path": "dotnet",
+    "Title": "Blazor",
+    "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Blazor.png"
   },
   {
-    "FileName": "github.md",
-    "Path": "linux",
-    "Title": "GitHub",
-    "Description": "Various GitHub configurations and terminal commands.",
-    "Content": ""
+    "FileName": "terminal-commands.md",
+    "Path": "dotnet",
+    "Title": ".NET terminal commands",
+    "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/dotnet-terminal-2.png"
   },
   {
     "FileName": "my-pop-os-setup.md",
     "Path": "linux",
     "Title": "My Pop OS setup",
     "Description": "My workstation setup process steps, commands, application list and various configurations.",
-    "Content": ""
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Screenshot-from-2020-05-30-20-07-47.jpg"
   },
   {
-    "FileName": "terminal-commands.md",
+    "FileName": "git.md",
     "Path": "linux",
-    "Title": "Terminal commands",
+    "Title": "Git",
+    "Description": "Git terminal commands and various configurations.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1\u0026auto=format\u0026fit=crop\u0026w=1955\u0026q=80"
+  },
+  {
+    "FileName": "github.md",
+    "Path": "linux",
+    "Title": "GitHub",
+    "Description": "Various GitHub configurations and terminal commands.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://images.unsplash.com/photo-1590595906931-81f04f0ccebb?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1350\u0026q=80"
+  },
+  {
+    "FileName": "ubuntu-terminal-commands.md",
+    "Path": "linux",
+    "Title": "Terminal commands for Ubuntu based distributions",
     "Description": "Various terminal commands for Ubuntu based Linux distributions.",
-    "Content": ""
-  },
-  {
-    "FileName": "blazor.md",
-    "Path": "dotnet",
-    "Title": "Blazor",
-    "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
-    "Content": ""
-  },
-  {
-    "FileName": "terminal-commands.md",
-    "Path": "dotnet",
-    "Title": "Terminal commands",
-    "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
-    "Content": ""
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1934\u0026q=80"
   }
 ]
