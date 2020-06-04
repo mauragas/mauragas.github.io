@@ -2,6 +2,8 @@
 
 My workstation setup process steps, commands, application list and various configurations.
 
+[![Screenshot](https://www.snapagogo.com/images/2020/05/30/Screenshot-from-2020-05-30-20-07-47.jpg)](https://www.snapagogo.com/image/cmb5SK)
+
 ## First steps
 
 Download ISO file from Pop OS [WEB site](https://system76.com/pop). Check USB device using command `sudo fdisk -l` and execute below command:

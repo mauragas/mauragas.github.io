@@ -2,6 +2,8 @@
 
 Git terminal commands and various configurations.
 
+![git](https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1&auto=format&fit=crop&w=1955&q=80)
+
 ## Configuration
 
 Sets the name you want attached to your commit transactions
