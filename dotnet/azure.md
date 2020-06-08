@@ -41,15 +41,19 @@ Execute command `az --version` to ensure what installation is completed successf
 
 #### Basic Azure CLI commands
 
-| Command                                     | Description                                                  |
-| ------------------------------------------- | ------------------------------------------------------------ |
-| az                                          | Show all available commands.                                 |
-| az login                                    | Login to Azure. Default WEB browser should open up and you should choose account you want to use. |
-| az account show                             | Show currently selected subscription.                        |
-| az account list                             | Show all available subscriptions.                            |
-| az account set -s "subscription name or ID" | Set specific subscription.                                   |
-| az subcommand -h                            | Get help information about subcommand (e.g. `az webapp -h` or `az webapp create -h`). |
-| az interactive                              | Start interactive CLI mode with IntelliSense auto completion. |
+| Command                                       | Description                                                  |
+| --------------------------------------------- | ------------------------------------------------------------ |
+| az                                            | Show all available commands.                                 |
+| az login                                      | Login to Azure. Default WEB browser should open up and you should choose account you want to use. |
+| az logout                                     | Log out to remove access to Azure subscriptions.             |
+| az account clear                              | Clear all subscriptions from the CLI's local cache.          |
+| az account list --output table                | Get list of all subscriptions.                               |
+| az account set --subscription "MySubsription" | Switch to subscription using ID or name.                     |
+| az account show                               | Show currently selected subscription.                        |
+| az account list                               | Show all available subscriptions.                            |
+| az account set -s "subscription name or ID"   | Set specific subscription.                                   |
+| az subcommand -h                              | Get help information about subcommand (e.g. `az webapp -h` or `az webapp create -h`). |
+| az interactive                                | Start interactive CLI mode with IntelliSense auto completion. |
 
 [![az-interactive.png](https://www.snapagogo.com/images/2020/06/07/az-interactive.png)](https://www.snapagogo.com/image/cmAW35)
 
@@ -83,7 +87,7 @@ To access resources of the subscription you need to assign application to a role
 Grant application and delegated permissions through administrator consent. You must login as a directory administrator.
 
 ```bash
-az ad app permission admin-consent --id 00000000-0000-0000-0000-000000000000
+az ad app permission admin-consent --id "00000000-0000-0000-0000-000000000000"
 ```
 
 - **id** - required identifier URI, application ID, or object ID.
@@ -109,6 +113,105 @@ Commands and arguments description:
 - **assignee** - Represent a user, group, or service principal. supported format: object id, user sign-in name, or service principal name.
 - **role** - Role name or id.
 - **scope** - Scope at which the role assignment or definition applies to.
+
+#### Configure application registration permission scopes
+
+For third party applications to request resources on behalf of a user you can use OAuth2 authorization protocol. Scopes are groups of permissions used to define actions which application can perform on behalf of a user. There are delegated and application permissions.
+
+| Delegated permissions                                       | Application permissions                               |
+| ----------------------------------------------------------- | ----------------------------------------------------- |
+| Application consent is granted on behalf of a specific user | Application consent is granted on behalf of any user  |
+| Used by applications that have present signed in user       | Used by application without present of signed in user |
+
+##### OAuth code grant flow
+
+Most basic [sign in flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc):
+
+1. User opens application.
+2. Vendor requests permissions scope through a specialized URL.
+3. Identity management system provides a code back to application.
+4. Application redeems the code for a token.
+5. User application redirects ID token.
+6. Vendor validates token and sets session cookie.
+7. Secured page is returned to the user.
+
+[![convergence-scenarios-webapp.svg](https://docs.microsoft.com/en-us/azure/active-directory/develop/media/v2-protocols-oidc/convergence-scenarios-webapp.svg)](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc)
+
+Other flows:
+
+- [Microsoft identity platform and Implicit grant flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-implicit-grant-flow)
+- https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-auth-code-flow
+- [Microsoft identity platform and OAuth 2.0 On-Behalf-Of flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)
+- [Microsoft identity platform and the OAuth 2.0 client credentials flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow)
+- [Microsoft identity platform and the OAuth 2.0 device authorization grant flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-device-code)
+- [Microsoft identity platform and OAuth 2.0 Resource Owner Password Credentials](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-oauth-ropc)
+- [Microsoft identity platform and OAuth 2.0 SAML bearer assertion flow](https://docs.microsoft.com/en-us/azure/active-directory/develop/v2-saml-bearer-assertion)
+
+#### Certificates and secrets
+
+When programmatically signing in you need to pass tenant ID, application ID and authentication key. If you store your application secret or certificate in key vault you need to update access policies to allow application access.
+
+You can [manage](https://docs.microsoft.com/en-us/cli/azure/ad/app/credential?view=azure-cli-latest) an application password or certificate credentials. Create an additional client secret with `--append`:
+
+```bash
+az ad app credential reset --id "00000000-0000-0000-0000-000000000000" --append
+```
+
+Remove `--append` to overwrite instead of appending additional.
+
+To upload an SSL certificate to a web application:
+
+```bash
+az webapp config ssl upload --certificate-file pathToPfxFile --certificate-password pfxPassword --name webappname --resource-group resourceGroup
+```
+
+- **certificate-file** - the file path for the `.pfx` file.
+- **certificate-password**  - the SSL cert password.
+- **name** - name of the web application. You can configure the default using `az configure --defaults web=<name>`.
+- **resource-group** - name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+
+To clean up deployment resource group:
+
+```bash
+az group delete --name resourceGroupName
+```
+
+#### Service principal and managed identity
+
+[Service principle](https://docs.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals) requires to store application credentials in Key Vault for secure storage and access. By using [managed identity](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview) (recommended) we do not need anymore worry about credentials in code, it can be easily enabled for supported services and it is tied to service life cycle, therefore it is managing the creation and automatic renewal of a service principle. To create service principle you can execute below [command](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli), use [PowerShell](https://docs.microsoft.com/en-us/powershell/azure/create-azure-service-principal-azureps) or [Portal](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
+
+```bash
+az ad sp create-for-rbac --name servicePrincipalName
+```
+
+To create user assigned managed identity execute below [command](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli):
+
+```bash
+az identity create --resource-group resourceGroup --name userAssignedIdentityName
+```
+
+- **identity** - managed service Identities.
+- **create** - managed service Identities.
+- **resource-group** - name of resource group. You can configure the default group.
+- **name** - the name of the identity resource.
+
+List user assigned managed identities:
+
+```bash
+az identity list -g resourceGroup
+```
+
+Delete a user assigned managed identity:
+
+```bash
+az identity delete -n userAssignedIdentityName -g resourceGroup
+```
+
+Other examples:
+
+- [Configure managed identities for Azure resources on an Azure VM using Azure CLI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+- [Assign a managed identity access to a resource using Azure CLI](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/howto-assign-access-cli)
+- [How to use managed identities for App Service and Azure Functions](https://docs.microsoft.com/en-us/azure/app-service/overview-managed-identity)
 
 ## References
 
