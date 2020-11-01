@@ -30,10 +30,10 @@
     "PictureUrl": "https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1350\u0026q=80"
   },
   {
-    "FileName": "my-pop-os-setup.md",
+    "FileName": "my-os-setup.md",
     "Path": "linux",
-    "Title": "My Pop OS setup",
-    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "Title": "My OS setup",
+    "Description": "My OS setup process steps, commands, application list and various configurations.",
     "Content": "",
     "LatestUpdate": "2020-05-30T22:02:03+02:00",
     "LatestAuthor": "Karolis Mauragas",
