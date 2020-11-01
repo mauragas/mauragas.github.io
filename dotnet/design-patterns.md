@@ -2,8 +2,6 @@
 
 Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.
 
-![photo](https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80)
-
 Design patterns are split into three categories:
 
 - Creational - instead of instantiating objects with `new` operator, design pattern provides a way to hide creation logic. It gives controls how objects are created for a given use case.

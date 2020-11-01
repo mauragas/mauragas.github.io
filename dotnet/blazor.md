@@ -2,8 +2,6 @@
 
 With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.
 
-[![Blazor.png](https://www.snapagogo.com/images/2020/05/30/Blazor.png)](https://www.snapagogo.com/image/cmbyKQ)
-
 ## Documentation
 
 1. [Blazor main page](https://blazor.net)

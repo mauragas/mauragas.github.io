@@ -2,8 +2,6 @@
 
 Common dotnet terminal commands for project or solution creation, build, publish and etc.
 
-[![dotnet-terminal-2.png](https://www.snapagogo.com/images/2020/05/30/dotnet-terminal-2.png)](https://www.snapagogo.com/image/cmbh4z)
-
 ## Documentation
 
 [Dotnet commands](https://docs.microsoft.com/en-us/dotnet/core/tools/dotnet)
