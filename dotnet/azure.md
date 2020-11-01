@@ -6,7 +6,7 @@ Azure is set of cloud services used for building, testing, deploying and managin
 
 To be able to use and deploy application in production we usually need stack of various services. Cloud service modules:
 
-- Traditional
+- On-premises
 - Infrastructure as a Service ([IaaS](https://azure.microsoft.com/en-us/overview/what-is-iaas))
 - Platform as a Service ([PaaS](https://azure.microsoft.com/en-gb/overview/what-is-paas))
 - Software as a Service ([SaaS](https://azure.microsoft.com/en-us/overview/what-is-saas)) 
@@ -15,20 +15,43 @@ To be able to use and deploy application in production we usually need stack of 
 
 Options for managing Azure resources:
 
-- [Portal](https://portal.azure.com) - great for exploring, but not automated.
-- [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure)
-- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure)
+- [Portal](https://portal.azure.com) - Great for exploring, but not automated.
+- [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure) - Limited core version of PowerShell is available for Linux. 
+- [Azure CLI](https://docs.microsoft.com/en-us/cli/azure) - Fully cross platform solution for managing Azure using command line.
 
 ### Defense and security layers
 
-https://azure.microsoft.com/en-us/blog/azure-layered-approach-to-physical-security/
-https://blog.alertlogic.com/blog/layering-protection-in-your-azure-environment/
+Three [layer](https://azure.microsoft.com/en-us/blog/azure-layered-approach-to-physical-security/) approach to security to prevent or slow down malicious attack:
 
-TODO
+- **Confidentiality** - Principle of least privilege. Restricts access to information (e.g. passwords, e-mail content, access certificates) only to explicitly granted individuals.
+- **Integrity** - Prevent unauthorized changes to information at rest or in transit.
+- **Availability** - Ensure services are available. Denial of service attack prevention, system security from natural disasters, high availability and disaster recovery.
+
+System [defense-in-depth strategy](https://docs.microsoft.com/en-us/kaizala/partnerdocs/security) can be layered into six parts:
+
+[![defence-in-depth.png](https://docs.microsoft.com/en-us/kaizala/partnerdocs/images/defence%20in%20depth.png)](https://docs.microsoft.com/en-us/kaizala/partnerdocs/security)
+
+- **Physical security** - Access to the building, control of data center hardware.
+- **Network** - Protection from network attacks, by identifying attack, minimizing impact and alert (e.g. DDOS protection, Firewall). Limit communication and access control (deny by default), restrict inbound internet access and limit [outbound connections](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-outbound-connections).
+- **Host** - Endpoint protection, control access to operating system. 
+- **Application** - Ensure application is securely build (e.g. update packages), do not publicly expose application secrets (e.g. passwords), make security design requirements.
+- **Administration** - Authentication and authorization, control access to infrastructure, audit events and changes.
+- **Data** - Ensure data security while it is at rest and in transit.
 
 ### Compliance and security requirements
 
-TODO
+Overall product security is a joint responsibility. Below diagram show [shared responsibilities](https://gallery.technet.microsoft.com/Shared-Responsibilities-81d0ff91) between Microsoft and customer:
+
+[![shared-responsibility.png](https://docs.microsoft.com/en-us/azure/security/fundamentals/media/shared-responsibility/shared-responsibility.png)](https://docs.microsoft.com/en-us/azure/security/fundamentals/shared-responsibility)
+
+We can see that cloud computing solution provides many benefits over on-premises. Responsibilities always retained by customer:
+
+- Data
+- Endpoints
+- Account
+- Access management
+
+On [Microsoft Trust Center](https://servicetrust.microsoft.com/) you can get more in-depth information about audit reports, data protection, security assessment. It have centralized [resources](https://servicetrust.microsoft.com/ViewPage/TrustDocuments) about security, compliance and privacy. Using [Compliance Manager](https://docs.microsoft.com/en-us/microsoft-365/compliance/compliance-manager-overview) you can manage compliance from central location, proactive risk assessment, prepare for compliance reports for audit and get insights and recommended actions.
 
 ### PowerShell core installation on Ubuntu
 
@@ -69,7 +92,9 @@ Execute command `az --version` to ensure what installation is completed successf
 
 ## Azure AD users and groups
 
-Azure AD is cloud based identity and access management service. You can manage users and groups using portal, [PowerShell](https://docs.microsoft.com/en-us/powershell/azure) or [CLI](https://docs.microsoft.com/en-us/cli/azure).
+[Azure AD](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis) is cloud based identity and access management service. You can manage users and groups using portal, [PowerShell](https://docs.microsoft.com/en-us/powershell/azure) or [CLI](https://docs.microsoft.com/en-us/cli/azure).
+
+[![azure-ad.png](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/images/azure-ad.png)](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/identity/azure-ad)
 
 ### Application registration in Azure AD
 
@@ -271,8 +296,22 @@ https://app.pluralsight.com/library/courses/microsoft-azure-subscription-securit
 ## Virtual networks
 
 - Overview
+
+
+
+
+
 - Create VNets and subnets
+
+
+
+
+
 - Configure user defined routes and VNet peering
+
+
+
+- Application security groups
 
 https://app.pluralsight.com/library/courses/microsoft-azure-implement-manage-virtual-networks
 
