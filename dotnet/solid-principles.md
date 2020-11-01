@@ -4,8 +4,6 @@ SOLID is acronym for 5 object orient programming principles which should help yo
 
 When you are considering whether to apply any of SOLID principles, you should practice Pain Driven Development (PDD). You should start writing simplest technique possible to solve the problem, you should not try apply all principles at the beginning of development, avoid premature optimization of your application design. After application grows you should search for places in application where it is "painful" to work with and therefore apply SOLID principles to relief the "pain" and improve design. The referred "pain" is difficulty of testing, code coupling, duplication and etc.
 
-![mountain](https://images.unsplash.com/photo-1504554559025-cd69cf2c3add?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1305&q=80)
-
 ## Single Responsibility Principle (SRP)
 
 Each software module (e.g. class or method) should have one and only one reason to change (responsibility).

@@ -2,8 +2,6 @@
 
 Various terminal commands for Ubuntu based Linux distributions.
 
-![terminal](https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80)
-
 ## Packages
 
 Update and clean

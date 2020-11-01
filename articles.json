@@ -5,19 +5,9 @@
     "Title": "Blazor",
     "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:16:21+02:00",
+    "LatestUpdate": "2020-05-30T22:28:36+02:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Blazor.png"
-  },
-  {
-    "FileName": "terminal-commands.md",
-    "Path": "dotnet",
-    "Title": ".NET terminal commands",
-    "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
-    "Content": "",
-    "LatestUpdate": "2020-05-30T22:16:21+02:00",
-    "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/dotnet-terminal-2.png"
+    "PictureUrl": ""
   },
   {
     "FileName": "design-patterns.md",
@@ -25,19 +15,29 @@
     "Title": "Design patterns",
     "Description": "Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:16:21+02:00",
+    "LatestUpdate": "2020-05-30T22:28:36+02:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://images.unsplash.com/photo-1514428631868-a400b561ff44?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1350\u0026q=80"
+    "PictureUrl": ""
   },
   {
-    "FileName": "my-pop-os-setup.md",
-    "Path": "linux",
-    "Title": "My Pop OS setup",
-    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "FileName": "solid-principles.md",
+    "Path": "dotnet",
+    "Title": "SOLID Principle",
+    "Description": "SOLID is acronym for 5 object orient programming principles which should help you create more easily testable and maintainable solutions.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-05-30T22:28:36+02:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Screenshot-from-2020-05-30-20-07-47.jpg"
+    "PictureUrl": "https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/media/image4-2.png"
+  },
+  {
+    "FileName": "terminal-commands.md",
+    "Path": "dotnet",
+    "Title": ".NET terminal commands",
+    "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
+    "Content": "",
+    "LatestUpdate": "2020-05-30T22:28:36+02:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": ""
   },
   {
     "FileName": "git.md",
@@ -45,9 +45,9 @@
     "Title": "Git",
     "Description": "Git terminal commands and various configurations.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-11-01T14:13:47+01:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-1.2.1\u0026auto=format\u0026fit=crop\u0026w=1955\u0026q=80"
+    "PictureUrl": ""
   },
   {
     "FileName": "github.md",
@@ -55,9 +55,9 @@
     "Title": "GitHub",
     "Description": "Various GitHub configurations and terminal commands.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-11-01T14:13:47+01:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://images.unsplash.com/photo-1590595906931-81f04f0ccebb?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1350\u0026q=80"
+    "PictureUrl": ""
   },
   {
     "FileName": "ubuntu-terminal-commands.md",
@@ -65,8 +65,18 @@
     "Title": "Terminal commands for Ubuntu based distributions",
     "Description": "Various terminal commands for Ubuntu based Linux distributions.",
     "Content": "",
-    "LatestUpdate": "2020-05-30T22:02:03+02:00",
+    "LatestUpdate": "2020-11-01T14:13:47+01:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?ixlib=rb-1.2.1\u0026ixid=eyJhcHBfaWQiOjEyMDd9\u0026auto=format\u0026fit=crop\u0026w=1934\u0026q=80"
+    "PictureUrl": ""
+  },
+  {
+    "FileName": "my-os-setup.md",
+    "Path": "linux",
+    "Title": "My OS setup",
+    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "Content": "",
+    "LatestUpdate": "2020-11-01T14:13:47+01:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Screenshot-from-2020-05-30-20-07-47.jpg"
   }
 ]
