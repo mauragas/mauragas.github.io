@@ -44,13 +44,13 @@ rm packages-microsoft-prod.deb
 APT applications
 
 ```bash
-sudo apt install -y curl make git gnome-tweaks tilix python3-nautilus zsh zim pulseeffects transmission apt-transport-https dotnet-sdk-3.1 virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso adb gnome-shell-extension-bluetooth-quick-connect xbindkeys firewalld flat-remix flat-remix-gtk flat-remix-gnome
+sudo apt install -y curl make git gnome-tweaks tilix python3-nautilus zsh zim pulseeffects transmission apt-transport-https dotnet-sdk-3.1 virtualbox virtualbox-ext-pack virtualbox-guest-additions-iso adb gnome-shell-extension-bluetooth-quick-connect xbindkeys firewalld flat-remix flat-remix-gtk flat-remix-gnome vlc
 ```
 
 Snap applications
 
 ```bash
-sudo snap install storage-explorer postman bpytop scrcpy obs-studio kdenlive vlc gimp spotify &&
+sudo snap install storage-explorer postman bpytop scrcpy obs-studio kdenlive gimp spotify &&
 sudo snap install slack --classic &&
 sudo snap install powershell --classic &&
 sudo snap install code --classic &&
@@ -71,6 +71,7 @@ Other applications
 
 - [Azure Data Studio](https://docs.microsoft.com/en-us/sql/azure-data-studio/download-azure-data-studio)
 - [Mega sync](https://mega.nz/linux/MEGAsync/xUbuntu_20.04/amd64)
+- [GitHub CLI](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
 
 ## Extensions
 
