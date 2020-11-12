@@ -29,7 +29,7 @@ namespace Application.Services.MarkdigParser.SyntaxHighlighting
       base.Write(renderer, codeBlock);
     }
 
-    private string GetCodeContent(LeafBlock block)
+    private static string GetCodeContent(LeafBlock block)
     {
       var slice = block.Lines.ToSlice();
       return slice.Text.Substring(slice.Start, slice.Length);
