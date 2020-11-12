@@ -6,18 +6,18 @@ namespace ArticleData.Console
 {
   internal static class Program
   {
-    private static ILogger _log;
-    private static AppConfiguration _appConfiguration;
+    private static ILogger log;
+    private static AppConfiguration appConfiguration;
 
     private static async Task Main(string[] args)
     {
-      _log = new LoggerConfiguration()
+      log = new LoggerConfiguration()
         .WriteTo.Console()
         .CreateLogger();
 
       try
       {
-        _appConfiguration = new AppConfiguration(_log, args);
+        appConfiguration = new AppConfiguration(log, args);
 
 #if !DEBUG
         System.Console.WriteLine("Press 'y' to continue.");
@@ -27,13 +27,13 @@ namespace ArticleData.Console
 #endif
         var articleData = new Articles(new Generator.Generator());
         await articleData.UpdateAsync(
-          _appConfiguration.ConfigurationOptions.PathToRepository,
-          _appConfiguration.ConfigurationOptions.PathToOutputFile)
-          .ConfigureAwait(false);
+          appConfiguration.ConfigurationOptions.PathToRepository,
+          appConfiguration.ConfigurationOptions.PathToOutputFile)
+            .ConfigureAwait(false);
       }
       catch (Exception e)
       {
-        _log?.Fatal("Application failed: {Message}", e);
+        log?.Fatal("Application failed: {Message}", e);
       }
     }
   }

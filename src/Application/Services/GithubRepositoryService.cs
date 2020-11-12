@@ -10,29 +10,25 @@ namespace Application.Services
 {
   public class GithubRepositoryService : IArticleRepository
   {
-    private Uri _urlToArticleInfoFile;
-    private Uri _rootUrl;
-    private readonly HttpClient _httpClient;
+    private Uri urlToArticleInfoFile;
+    private Uri rootUrl;
+    private readonly HttpClient httpClient;
 
-    public GithubRepositoryService(HttpClient httpClient)
-    {
-      _httpClient = httpClient;
-    }
+    public GithubRepositoryService(HttpClient client) => this.httpClient = client;
+
     public void Initialize(string rootUrl, string articleInfoFileName)
     {
-      _rootUrl = new Uri(rootUrl);
-      _urlToArticleInfoFile = new Uri(_rootUrl, articleInfoFileName);
+      this.rootUrl = new Uri(rootUrl);
+      this.urlToArticleInfoFile = new Uri(this.rootUrl, articleInfoFileName);
     }
 
     public async Task<List<ArticleFileInfo>> GetAllArticlesAsync()
     {
-      var result = await _httpClient.GetStringAsync(_urlToArticleInfoFile.AbsoluteUri).ConfigureAwait(false);
+      var result = await this.httpClient.GetStringAsync(this.urlToArticleInfoFile.AbsoluteUri).ConfigureAwait(false);
       return JsonSerializer.Deserialize<List<ArticleFileInfo>>(result);
     }
 
-    public async Task<string> GetArticleContentAsync(string pathToFile)
-    {
-      return await _httpClient.GetStringAsync(new Uri(_rootUrl, pathToFile)).ConfigureAwait(false);
-    }
+    public async Task<string> GetArticleContentAsync(string pathToFile) =>
+      await this.httpClient.GetStringAsync(new Uri(this.rootUrl, pathToFile)).ConfigureAwait(false);
   }
 }

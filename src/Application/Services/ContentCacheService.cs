@@ -9,16 +9,12 @@ namespace Application.Services
   {
     public List<ArticleFileInfo> Articles { get; set; }
 
-    private readonly IArticleRepository _repository;
+    private readonly IArticleRepository repository;
 
-    public ContentCacheService(IArticleRepository articleRepository)
-    {
-      _repository = articleRepository;
-    }
+    public ContentCacheService(IArticleRepository articleRepository) =>
+      this.repository = articleRepository;
 
-    public async Task InitializeAsync()
-    {
-      Articles = await _repository?.GetAllArticlesAsync();
-    }
+    public async Task InitializeAsync() =>
+      Articles = await this.repository?.GetAllArticlesAsync();
   }
 }

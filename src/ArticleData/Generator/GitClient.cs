@@ -7,24 +7,25 @@ namespace ArticleData.Generator
 {
   public class GitClient : IDisposable
   {
-    private readonly Repository _repository;
+    private readonly Repository repository;
 
     public GitClient(string pathToRepository)
     {
-      string repoPath = Repository.Discover(pathToRepository);
-      _repository = new Repository(repoPath);
+      var repoPath = Repository.Discover(pathToRepository);
+      this.repository = new Repository(repoPath);
     }
 
     public void GetFileInfo(ArticleFileInfo articleFileInfo)
     {
-      var commit = _repository.Commits.QueryBy(articleFileInfo.Path).Take(1).Last().Commit;
+      var commit = this.repository.Commits.QueryBy(articleFileInfo.Path).Take(1).Last().Commit;
       articleFileInfo.LatestUpdate = commit.Author.When;
       articleFileInfo.LatestAuthor = commit.Author.Name;
     }
 
     public void Dispose()
     {
-      _repository.Dispose();
+      GC.SuppressFinalize(this);
+      this.repository.Dispose();
     }
   }
 }

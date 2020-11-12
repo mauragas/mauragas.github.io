@@ -8,21 +8,14 @@ namespace Application.Services
 {
   public class MarkdigParserService : IMarkdownParser
   {
-    private readonly MarkdownPipeline _markdownPipeline;
+    private readonly MarkdownPipeline markdownPipeline;
 
-    public MarkdigParserService()
-    {
-      _markdownPipeline = GetMarkdownPipeline();
-    }
+    public MarkdigParserService() => this.markdownPipeline = GetMarkdownPipeline();
 
-    public string ParseContentToHtml(string content)
-    {
-      return Markdig.Markdown.ToHtml(content, _markdownPipeline);
-    }
+    public string ParseContentToHtml(string content) =>
+      Markdown.ToHtml(content, this.markdownPipeline);
 
-    private MarkdownPipeline GetMarkdownPipeline()
-    {
-      return new MarkdownPipelineBuilder()
+    private static MarkdownPipeline GetMarkdownPipeline() => new MarkdownPipelineBuilder()
         .UseAbbreviations()
         .UseAdvancedExtensions()
         .UseAutoIdentifiers(AutoIdentifierOptions.GitHub)
@@ -53,6 +46,5 @@ namespace Application.Services
         .UseYamlFrontMatter()
         .UseSyntaxHighlighting(StyleDictionary.DefaultLight, true)
         .Build();
-    }
   }
 }

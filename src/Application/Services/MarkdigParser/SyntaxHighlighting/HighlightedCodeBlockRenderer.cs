@@ -8,14 +8,14 @@ namespace Application.Services.MarkdigParser.SyntaxHighlighting
 {
   public class HighlightedCodeBlockRenderer : CodeBlockRenderer
   {
-    private readonly StyleDictionary _style;
-    private readonly bool _inlineCss;
+    private readonly StyleDictionary style;
+    private readonly bool inlineCss;
 
     public HighlightedCodeBlockRenderer(StyleDictionary style, bool inlineCss)
       : base()
     {
-      _style = style;
-      _inlineCss = inlineCss;
+      this.style = style;
+      this.inlineCss = inlineCss;
     }
 
     protected override void Write(HtmlRenderer renderer, CodeBlock codeBlock)
@@ -23,7 +23,7 @@ namespace Application.Services.MarkdigParser.SyntaxHighlighting
       if (codeBlock is FencedCodeBlock fencedCodeBlock &&
         Languages.FindById(fencedCodeBlock.Info) is ILanguage codelanguage)
       {
-        renderer.Write(GetColorizedCode(codelanguage, GetCodeContent(fencedCodeBlock)));
+        _ = renderer.Write(GetColorizedCode(codelanguage, GetCodeContent(fencedCodeBlock)));
         return;
       }
       base.Write(renderer, codeBlock);
@@ -35,11 +35,8 @@ namespace Application.Services.MarkdigParser.SyntaxHighlighting
       return slice.Text.Substring(slice.Start, slice.Length);
     }
 
-    private string GetColorizedCode(ILanguage language, string code)
-    {
-      return _inlineCss ?
-        new HtmlFormatter(_style).GetHtmlString(code, language) :
-        new HtmlClassFormatter(_style).GetHtmlString(code, language);
-    }
+    private string GetColorizedCode(ILanguage language, string code) => this.inlineCss ?
+        new HtmlFormatter(this.style).GetHtmlString(code, language) :
+        new HtmlClassFormatter(this.style).GetHtmlString(code, language);
   };
 }

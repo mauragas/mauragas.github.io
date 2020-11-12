@@ -7,14 +7,11 @@ namespace ArticleData.Console
 {
   public class Articles
   {
-    private readonly IGenerator _generator;
-    public Articles(IGenerator generator)
-    {
-      _generator = generator;
-    }
+    private readonly IGenerator generator;
+    public Articles(IGenerator generator) => this.generator = generator;
     public async Task UpdateAsync(string rootPath, string fileName)
     {
-      var articles = _generator.GetArticles(rootPath);
+      var articles = this.generator.GetArticles(rootPath);
 
       var options = new JsonSerializerOptions
       {

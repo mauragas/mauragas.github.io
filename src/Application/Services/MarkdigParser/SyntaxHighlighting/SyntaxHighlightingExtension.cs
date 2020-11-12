@@ -7,21 +7,19 @@ namespace Application.Services.MarkdigParser.SyntaxHighlighting
 {
   public class SyntaxHighlightingExtension : IMarkdownExtension
   {
-    private readonly StyleDictionary _style;
-    private readonly bool _inlineCss;
+    private readonly StyleDictionary style;
+    private readonly bool inlineCss;
 
     public SyntaxHighlightingExtension(StyleDictionary styles, bool inlineCss)
     {
-      _style = styles;
-      _inlineCss = inlineCss;
+      this.style = styles;
+      this.inlineCss = inlineCss;
     }
 
     public void Setup(MarkdownPipelineBuilder pipeline) { }
 
-    public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer)
-    {
+    public void Setup(MarkdownPipeline pipeline, IMarkdownRenderer renderer) =>
       renderer.ObjectRenderers.ReplaceOrAdd<CodeBlockRenderer>(
-        new HighlightedCodeBlockRenderer(_style, _inlineCss));
-    }
+        new HighlightedCodeBlockRenderer(this.style, this.inlineCss));
   }
 }

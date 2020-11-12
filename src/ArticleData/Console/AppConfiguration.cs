@@ -12,18 +12,18 @@ namespace ArticleData.Console
   public class AppConfiguration
   {
     public Options ConfigurationOptions { get; set; }
-    private readonly ILogger _log;
+    private readonly ILogger log;
 
     public AppConfiguration(ILogger logger, string[] commandLineArguments)
     {
-      _log = logger;
+      this.log = logger;
       SetValuesFromConfigurationFile();
       if (commandLineArguments.Length > 0)
         CombineOptions(ParseCommandArguments(commandLineArguments));
 
       SetDefaultValuesIfNeeded();
 
-      _log.Information("Configuration values:\n{@Options}", ConfigurationOptions);
+      this.log.Information("Configuration values:\n{@Options}", ConfigurationOptions);
     }
 
     private void SetValuesFromConfigurationFile()
@@ -44,21 +44,18 @@ namespace ArticleData.Console
     /// While debugging returns ./bin/Debug/netcoreapp3.1/appsettings.json
     /// After installation /usr/share/ArticleData/appsettings.json
     /// </summary>
-    private string GetAppSettinsFilePath()
-    {
-      return Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "appsettings.json");
-    }
+    private static string GetAppSettinsFilePath() => Path.Combine(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location), "appsettings.json");
 
     private Options ParseCommandArguments(string[] commandLineArguments)
     {
       Options parsedArguments = null;
-      Parser.Default.ParseArguments<Options>(commandLineArguments)
+      _ = Parser.Default.ParseArguments<Options>(commandLineArguments)
           .WithParsed(options => parsedArguments = options)
           .WithNotParsed(errors => HandleParseError(errors));
 
       if (parsedArguments is null)
       {
-        _log.Error("Failed to parse command arguments.");
+        this.log.Error("Failed to parse command arguments.");
         Environment.Exit(0);
       }
 
@@ -71,7 +68,7 @@ namespace ArticleData.Console
     private void HandleParseError(IEnumerable<Error> errors)
     {
       if (!errors.Any(e => e is HelpRequestedError || e is VersionRequestedError))
-        _log.Error("Failed to parse command line arguments {ErrorTags}", errors.Select(e => e.Tag));
+        this.log.Error("Failed to parse command line arguments {ErrorTags}", errors.Select(e => e.Tag));
       Environment.Exit(0);
     }
 

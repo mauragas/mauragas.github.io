@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 using Application.Services.Interfaces;
 using Application.Services;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Client
 {
@@ -15,18 +15,17 @@ namespace Application.Client
       var builder = WebAssemblyHostBuilder.CreateDefault(args);
       AddServicesToDependencyContainer(builder);
       builder.RootComponents.Add<App>("app");
-      builder.Services.AddTransient(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+      _ = builder.Services.AddTransient(_ => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
       var host = builder.Build();
       await InitializeServicesAsync(host).ConfigureAwait(false);
       await host.RunAsync().ConfigureAwait(false);
     }
 
-    private static void AddServicesToDependencyContainer(WebAssemblyHostBuilder builder)
-    {
-      builder.Services.AddSingleton<IMarkdownParser, MarkdigParserService>();
-      builder.Services.AddSingleton<IArticleRepository, GithubRepositoryService>();
-      builder.Services.AddSingleton<IContentCache, ContentCacheService>();
-    }
+    private static void AddServicesToDependencyContainer(WebAssemblyHostBuilder builder) =>
+      builder.Services
+        .AddSingleton<IMarkdownParser, MarkdigParserService>()
+        .AddSingleton<IArticleRepository, GithubRepositoryService>()
+        .AddSingleton<IContentCache, ContentCacheService>();
 
     private static async Task InitializeServicesAsync(WebAssemblyHost host)
     {

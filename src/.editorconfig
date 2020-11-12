@@ -11,7 +11,7 @@ root = true
 [*]
 charset = utf-8
 indent_style = space
-indent_size = 4
+indent_size = 2
 insert_final_newline = true
 trim_trailing_whitespace = true
 
@@ -88,8 +88,8 @@ indent_style = tab
 # "this." and "Me." qualifiers
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#this-and-me
 dotnet_style_qualification_for_field = true:warning
-dotnet_style_qualification_for_property = true:warning
-dotnet_style_qualification_for_method = true:warning
+#dotnet_style_qualification_for_property = true:warning
+#dotnet_style_qualification_for_method = true:warning
 dotnet_style_qualification_for_event = true:warning
 # Language keywords instead of framework type names for type references
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#language-keywords
@@ -166,7 +166,7 @@ csharp_style_throw_expression = true:warning
 csharp_style_conditional_delegate_call = true:warning
 # Code block preferences
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#code-block-preferences
-csharp_prefer_braces = true:warning
+#csharp_prefer_braces = true:warning
 # Unused value preferences
 # https://docs.microsoft.com/visualstudio/ide/editorconfig-language-conventions#unused-value-preferences
 csharp_style_unused_value_expression_statement_preference = discard_variable:suggestion

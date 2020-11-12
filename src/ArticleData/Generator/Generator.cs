@@ -13,14 +13,14 @@ namespace ArticleData.Generator
         path = Path.GetDirectoryName(path);
 
       var articleFiles = GetArticles(path, "*.md");
-      articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
+      _ = articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
       var gitClient = new GitClient(path);
       foreach (var file in articleFiles)
         gitClient.GetFileInfo(file);
       return articleFiles;
     }
 
-    private List<ArticleFileInfo> GetArticles(string path, string fileExtension)
+    private static List<ArticleFileInfo> GetArticles(string path, string fileExtension)
     {
       var articles = new List<ArticleFileInfo>();
       var directory = new DirectoryInfo(path);
@@ -101,8 +101,8 @@ namespace ArticleData.Generator
 
     private static string GetUrl(string line)
     {
-      int startIndex = line.IndexOf('(');
-      int length = line.IndexOf(')') - startIndex - 1;
+      var startIndex = line.IndexOf('(');
+      var length = line.IndexOf(')') - startIndex - 1;
       var url = line.Substring(startIndex + 1, length);
 
       if (Uri.IsWellFormedUriString(url, UriKind.Absolute))
