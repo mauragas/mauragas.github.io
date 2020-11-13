@@ -31,7 +31,7 @@ namespace Application.Client
     {
       var repositoryService = host.Services.GetRequiredService<IArticleRepository>();
       (repositoryService as GithubRepositoryService)?.Initialize(
-        "https://raw.githubusercontent.com/mauragas/Mauragas.github.io/articles/",
+        "https://raw.githubusercontent.com/mauragas/Mauragas.github.io/master/articles/",
         "articles.json");
 
       var contentHandler = host.Services.GetRequiredService<IContentCache>() as ContentCacheService;
