@@ -1,0 +1,15 @@
+﻿@page "/linux"
+@inherits LinuxBase
+
+@if (ArticleFiles is null)
+{
+  <div>
+    <SpinnerIndicator />
+  </div>
+}
+else
+{
+  <div>
+    <ArticleCards ArticleFiles=@ArticleFiles />
+  </div>
+}

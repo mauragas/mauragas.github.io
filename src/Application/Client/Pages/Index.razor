@@ -1,0 +1,17 @@
+﻿@page "/"
+@inherits IndexBase
+
+<GithubButtons />
+
+@if (ArticleFiles is null)
+{
+  <div class="col">
+    <SpinnerIndicator />
+  </div>
+}
+else
+{
+  <div>
+    <ArticleCards ArticleFiles=@ArticleFiles />
+  </div>
+}

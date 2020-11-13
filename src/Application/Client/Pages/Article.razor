@@ -1,0 +1,13 @@
+@page "/article/{FolderName}/{FileName}"
+@inherits ArticleBase
+
+@if (MarkupDocument is null)
+{
+  <div>
+    <SpinnerIndicator />
+  </div>
+}
+else
+{
+  @((MarkupString)MarkupDocument)
+}
