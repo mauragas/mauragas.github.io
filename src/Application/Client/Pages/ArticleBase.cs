@@ -42,7 +42,7 @@ namespace Application.Client.Pages
     {
       var cashedArticle = ContentCache.Articles
         ?.FirstOrDefault(a => a.Path == FolderName && a.FileName == FileName);
-      var pathToFile = System.IO.Path.Combine(FolderName, FileName);
+      var pathToFile = System.IO.Path.Combine(FolderName, FileName + ".md");
       if (string.IsNullOrWhiteSpace(cashedArticle.Content))
         cashedArticle.Content = await Repository.GetArticleContentAsync(pathToFile).ConfigureAwait(false);
       return MarkdownParser.ParseContentToHtml(cashedArticle.Content);
