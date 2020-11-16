@@ -32,7 +32,7 @@
   text-overflow: ellipsis;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 850px) {
   .top-row:not(.auth)[b-x6u6abgn9a] {
     display: none;
   }
@@ -46,7 +46,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 850px) {
   .page[b-x6u6abgn9a] {
     flex-direction: row;
   }
@@ -59,7 +59,10 @@
   }
 
   .main[b-x6u6abgn9a]{
+    max-width: 70vmax;
     width: 0%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .top-row[b-x6u6abgn9a] {
@@ -126,7 +129,7 @@
   color: white;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 850px) {
   .navbar-toggler[b-fftvkrr80d] {
     display: none;
   }
