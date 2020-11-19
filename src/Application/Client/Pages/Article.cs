@@ -7,7 +7,7 @@ using Microsoft.JSInterop;
 
 namespace Application.Client.Pages
 {
-  public class ArticleBase : ComponentBase
+  public partial class Article
   {
     public string MarkupDocument { get; set; }
 

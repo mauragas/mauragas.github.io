@@ -8,7 +8,7 @@ using Microsoft.JSInterop;
 
 namespace Application.Client.Pages
 {
-  public class LinuxBase : ComponentBase
+  public partial class Linux
   {
     internal List<ArticleFileInfo> ArticleFiles { get; set; }
 

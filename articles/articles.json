@@ -1,91 +1,91 @@
 [
   {
-    "FileName": "azure",
-    "Path": "dotnet",
-    "Title": "Azure",
-    "Description": "Azure is set of cloud services used for building, testing, deploying and managing applications and services through data centers.",
-    "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
-    "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://www.snapagogo.com/images/2020/06/04/what-is-saas.png"
-  },
-  {
-    "FileName": "blazor",
+    "FileName": "blazor.md",
     "Path": "dotnet",
     "Title": "Blazor",
     "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": ""
   },
   {
-    "FileName": "design-patterns",
-    "Path": "dotnet",
-    "Title": "Design patterns",
-    "Description": "Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.",
-    "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
-    "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": ""
-  },
-  {
-    "FileName": "solid-principles",
+    "FileName": "solid-principles.md",
     "Path": "dotnet",
     "Title": "SOLID Principle",
     "Description": "SOLID is acronym for 5 object orient programming principles which should help you create more easily testable and maintainable solutions.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/media/image4-2.png"
   },
   {
-    "FileName": "terminal-commands",
+    "FileName": "terminal-commands.md",
     "Path": "dotnet",
     "Title": ".NET terminal commands",
     "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": ""
   },
   {
-    "FileName": "my-os-setup",
-    "Path": "linux",
-    "Title": "My OS setup",
-    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "FileName": "design-patterns.md",
+    "Path": "dotnet",
+    "Title": "Design patterns",
+    "Description": "Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
-    "PictureUrl": "https://www.snapagogo.com/images/2020/05/30/Screenshot-from-2020-05-30-20-07-47.jpg"
+    "PictureUrl": ""
   },
   {
-    "FileName": "git",
+    "FileName": "azure.md",
+    "Path": "dotnet",
+    "Title": "Azure",
+    "Description": "Azure is set of cloud services used for building, testing, deploying and managing applications and services through data centers.",
+    "Content": "",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/06/04/what-is-saas.png"
+  },
+  {
+    "FileName": "git.md",
     "Path": "linux",
     "Title": "Git",
     "Description": "Git terminal commands and various configurations.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": ""
   },
   {
-    "FileName": "github",
+    "FileName": "github.md",
     "Path": "linux",
     "Title": "GitHub",
     "Description": "Various GitHub configurations and terminal commands.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": ""
   },
   {
-    "FileName": "ubuntu-terminal-commands",
+    "FileName": "my-os-setup.md",
+    "Path": "linux",
+    "Title": "My OS setup",
+    "Description": "My workstation setup process steps, commands, application list and various configurations.",
+    "Content": "",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "https://www.snapagogo.com/images/2020/11/02/pop-os-2020-05-30.jpg"
+  },
+  {
+    "FileName": "ubuntu-terminal-commands.md",
     "Path": "linux",
     "Title": "Terminal commands for Ubuntu based distributions",
     "Description": "Various terminal commands for Ubuntu based Linux distributions.",
     "Content": "",
-    "LatestUpdate": "2020-11-01T14:49:05+01:00",
+    "LatestUpdate": "2020-11-13T07:48:11+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": ""
   }

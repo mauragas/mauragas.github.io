@@ -1,6 +1,5 @@
 publish:
-	dotnet clean ./Application/Client -c Release
-	rm -r ./Application/Client/bin -f
+	git clean -fdx
 	rm -r ../docs/* -f
 	dotnet build ./Application/Client -c Release
 	dotnet publish ./Application/Client -c Release

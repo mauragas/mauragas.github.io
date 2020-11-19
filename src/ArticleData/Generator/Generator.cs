@@ -9,6 +9,7 @@ namespace ArticleData.Generator
   {
     public List<ArticleFileInfo> GetArticles(string path)
     {
+      path = Path.GetFullPath(path);
       if (!Directory.Exists(path))
         path = Path.GetDirectoryName(path);
 
@@ -35,7 +36,6 @@ namespace ArticleData.Generator
           Title = GetTitle(content),
           PictureUrl = GetPictureUrl(content),
           Content = string.Empty
-
         });
       }
       return articles;

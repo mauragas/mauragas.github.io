@@ -16,8 +16,11 @@
       "request": "launch",
       "preLaunchTask": "build-article-data-console",
       // If you have changed target frameworks, make sure to update the program path.
-      "program": "${workspaceFolder}/ArticleData/Console/bin/Debug/netcoreapp3.1/ArticleData.dll",
-      "args": [],
+      "program": "${workspaceFolder}/ArticleData/Console/bin/Debug/net5.0/ArticleData.dll",
+      "args": [
+        "--PathToOutputFile=${workspaceFolder}/../articles/articles.json",
+        "--PathToRepository=${workspaceFolder}/../articles"
+      ],
       "cwd": "${workspaceFolder}",
       // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
       "console": "internalConsole",
