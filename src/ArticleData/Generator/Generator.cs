@@ -13,7 +13,7 @@ namespace ArticleData.Generator
       if (!Directory.Exists(path))
         path = Path.GetDirectoryName(path);
 
-      var articleFiles = GetArticles(path, "*.md");
+      var articleFiles = GetArticles(path, ".md");
       _ = articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
       var gitClient = new GitClient(path);
       foreach (var file in articleFiles)
@@ -25,12 +25,14 @@ namespace ArticleData.Generator
     {
       var articles = new List<ArticleFileInfo>();
       var directory = new DirectoryInfo(path);
-      foreach (var file in directory.GetFiles(fileExtension, SearchOption.AllDirectories))
+      var searchPattern = "*" + fileExtension;
+      foreach (var file in directory.GetFiles(searchPattern, SearchOption.AllDirectories))
       {
         var content = file.OpenText().ReadToEnd();
         articles.Add(new ArticleFileInfo
         {
-          FileName = file.Name,
+          FileName = file.Name.Replace(fileExtension, string.Empty),
+          FileExtension = fileExtension,
           Path = file.FullName.Replace($"{path}/", string.Empty).Replace($"/{file.Name}", string.Empty),
           Description = GetDescription(content),
           Title = GetTitle(content),

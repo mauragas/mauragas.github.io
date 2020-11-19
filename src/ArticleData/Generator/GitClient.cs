@@ -23,7 +23,8 @@ namespace ArticleData.Generator
 
     public void GetFileInfo(ArticleFileInfo articleFileInfo)
     {
-      var pathToFile = Path.Combine(articleFileInfo.Path, articleFileInfo.FileName);
+      var pathToFile = Path.Combine(articleFileInfo.Path, articleFileInfo.FileName)
+        + articleFileInfo.FileExtension;
       var latestCommit = this.repository.Commits
         .QueryBy(this.commitFilter)
         .Where(c => c.Tree[pathToFile] != null)

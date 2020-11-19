@@ -12,5 +12,6 @@ namespace Application.Shared.Models
     public DateTimeOffset LatestUpdate { get; set; }
     public string LatestAuthor { get; set; }
     public string PictureUrl { get; set; }
+    public string FileExtension { get; set; }
   }
 }
