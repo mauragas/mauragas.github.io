@@ -5,7 +5,7 @@
     "Title": "Blazor",
     "Description": "With Blazor you can build client WEB applications with C#. You can run it on WebAssembly or server.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"
@@ -16,7 +16,7 @@
     "Title": "SOLID Principle",
     "Description": "SOLID is acronym for 5 object orient programming principles which should help you create more easily testable and maintainable solutions.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://docs.microsoft.com/en-us/dotnet/architecture/modern-web-apps-azure/media/image4-2.png",
     "FileExtension": ".md"
@@ -27,7 +27,7 @@
     "Title": ".NET terminal commands",
     "Description": "Common dotnet terminal commands for project or solution creation, build, publish and etc.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"
@@ -38,7 +38,7 @@
     "Title": "Design patterns",
     "Description": "Patterns are guides for software design but not strict implementation rules, therefore patterns can have many different variations with own pros and cons.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"
@@ -49,9 +49,20 @@
     "Title": "Azure",
     "Description": "Azure is set of cloud services used for building, testing, deploying and managing applications and services through data centers.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://www.snapagogo.com/images/2020/06/04/what-is-saas.png",
+    "FileExtension": ".md"
+  },
+  {
+    "FileName": "entity-framework",
+    "Path": "dotnet",
+    "Title": "Entity Framework",
+    "Description": "It is an object-relational mapper that enables you to work with relational data using domain-specific objects.",
+    "Content": "",
+    "LatestUpdate": "2020-11-22T08:51:03+01:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "",
     "FileExtension": ".md"
   },
   {
@@ -60,7 +71,7 @@
     "Title": "Git",
     "Description": "Git terminal commands and various configurations.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"
@@ -71,7 +82,7 @@
     "Title": "GitHub",
     "Description": "Various GitHub configurations and terminal commands.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"
@@ -82,7 +93,7 @@
     "Title": "My OS setup",
     "Description": "My workstation setup process steps, commands, application list and various configurations.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://www.snapagogo.com/images/2020/11/02/pop-os-2020-05-30.jpg",
     "FileExtension": ".md"
@@ -93,7 +104,7 @@
     "Title": "Terminal commands for Ubuntu based distributions",
     "Description": "Various terminal commands for Ubuntu based Linux distributions.",
     "Content": "",
-    "LatestUpdate": "2020-11-13T07:48:11+01:00",
+    "LatestUpdate": "2020-11-13T07:50:23+01:00",
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "",
     "FileExtension": ".md"

@@ -16,8 +16,9 @@ namespace ArticleData.Generator
       var articleFiles = GetArticles(path, ".md");
       _ = articleFiles.Remove(articleFiles.Find(a => a.FileName.StartsWith("README")));
       var gitClient = new GitClient(path);
+      var rootFolder = path.Replace(gitClient.RootPathToRepository, string.Empty);
       foreach (var file in articleFiles)
-        gitClient.GetFileInfo(file);
+        gitClient.GetFileInfo(file, rootFolder);
       return articleFiles;
     }
 

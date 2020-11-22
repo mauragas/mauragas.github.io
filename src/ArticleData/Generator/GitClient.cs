@@ -8,27 +8,30 @@ namespace ArticleData.Generator
 {
   public class GitClient : IDisposable
   {
+    public string RootPathToRepository { get; private set; }
+
     private readonly Repository repository;
     private readonly CommitFilter commitFilter;
 
-    public GitClient(string pathToRepository)
+    public GitClient(string path)
     {
-      var repoPath = Repository.Discover(pathToRepository);
-      this.repository = new Repository(repoPath);
+      RootPathToRepository = Repository
+        .Discover(path)
+        .Replace(".git/", string.Empty);
+      this.repository = new Repository(RootPathToRepository);
       this.commitFilter = new CommitFilter
       {
-        SortBy = CommitSortStrategies.Topological
+        FirstParentOnly = true
       };
     }
 
-    public void GetFileInfo(ArticleFileInfo articleFileInfo)
+    public void GetFileInfo(ArticleFileInfo articleFileInfo, string rootFolder)
     {
-      var pathToFile = Path.Combine(articleFileInfo.Path, articleFileInfo.FileName)
+      var pathToFile = Path.Combine(rootFolder, articleFileInfo.Path, articleFileInfo.FileName)
         + articleFileInfo.FileExtension;
       var latestCommit = this.repository.Commits
-        .QueryBy(this.commitFilter)
-        .Where(c => c.Tree[pathToFile] != null)
-        .First();
+        .QueryBy(pathToFile, this.commitFilter)
+        .First().Commit;
       articleFileInfo.LatestUpdate = latestCommit.Committer.When;
       articleFileInfo.LatestAuthor = latestCommit.Committer.Name;
     }
