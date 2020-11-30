@@ -14,7 +14,7 @@ When classes are doing too much at the same time, usually it is coupling too man
 
 ### Responsibility or reason to change
 
-Responsibility is decision of code making about the specific implementation details of some part of application behavior. Responsibility is the reason why class or method needs to change or a part of code needs to do about specific implementation details of some part of application. When you have several responsibilities you are also can do several tasks or changes at once.
+Responsibility is decision of code making about the specific implementation details of some part of application behavior. Responsibility is the reason why class or method needs to change or a part of code needs to do about specific implementation details of some part of application. When you have several responsibilities you can also do several tasks or changes at once.
 
 Examples of responsibilities:
 
@@ -61,7 +61,7 @@ Approaches for applying OCP:
 
 - Parameters - by passing different arguments to the methods we can change its behavior.
 - Inheritance - you can change behavior using child class. Therefore you can `override` parent `virtual` methods or add your own.
-- Composition and injection - logic is provided by another type class is referencing. Instead hard coding references, it can be provided throw dependency injection.
+- Composition and injection - logic is provided by another type class is referencing. Instead hard coding references, it can be provided through dependency injection.
 - Extension methods - ability to add additional methods to types without modifying types itself.
 
 Prefer implementing new features in new classes, especially in large legacy code base. If class is new, nothing depends on it and you can design it to suit the problem without touching existing code, making it fully testable and follow SRP.
