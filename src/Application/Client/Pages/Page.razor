@@ -1,0 +1,12 @@
+@page "/{FolderName}/{FileName}"
+
+@if (MarkupDocument is null)
+{
+  <div>
+    <SpinnerIndicator />
+  </div>
+}
+else
+{
+  @((MarkupString)MarkupDocument)
+}

@@ -1,0 +1,15 @@
+﻿@page "/"
+@page "/index"
+
+@if (PageFiles is null)
+{
+  <div class="col">
+  <SpinnerIndicator />
+</div>
+}
+else
+{
+  <div>
+  <PageCards PageFiles=@PageFiles />
+      </div>
+}

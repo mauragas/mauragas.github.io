@@ -1,0 +1,14 @@
+﻿@page "/linux"
+
+@if (PageFiles is null)
+{
+  <div>
+  <SpinnerIndicator />
+</div>
+}
+else
+{
+  <div>
+  <PageCards PageFiles=@PageFiles />
+      </div>
+}

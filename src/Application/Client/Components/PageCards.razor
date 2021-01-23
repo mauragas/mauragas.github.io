@@ -1,0 +1,8 @@
+@inherits PageCardsBase
+
+<div class="card-columns">
+  @foreach (var file in PageFiles)
+  {
+    <PageCard PageFileInfo=@file />
+  }
+</div>
