@@ -2,11 +2,10 @@
 
 Project accessible from [Mauragas.github.io](https://mauragas.github.io/).
 
-## Folders
+## Branches
 
-| Name     | Description                |
-| -------- | -------------------------- |
-| src      | Application source code.   |
-| articles | Github ages content files. |
-
-Published application files are stored in [gh-pages](https://github.com/mauragas/mauragas.github.io/tree/gh-pages) branch.
+| Name                                                                     | Description                  |
+| ------------------------------------------------------------------------ | ---------------------------- |
+| [main](https://github.com/mauragas/mauragas.github.io/tree/main)         | Application source code.     |
+| [md-pages](https://github.com/mauragas/mauragas.github.io/tree/md-pages) | Markdown page content files. |
+| [gh-pages](https://github.com/mauragas/mauragas.github.io/tree/gh-pages) | Published github page files. |
