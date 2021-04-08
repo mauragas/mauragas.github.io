@@ -350,6 +350,22 @@ sudo unattended-upgrades --debug &&
 cat /var/log/unattended-upgrades/unattended-upgrades.log
 ```
 
+#### Run updates on startup with script
+
+Create script `/usr/bin/upgrade-all` with content:
+
+```bash
+apt update && apt full-upgrade -y && apt autoremove -y && apt autoclean && snap refresh
+```
+
+Make file executable `sudo chmod +x /usr/bin/upgrade-all`.
+
+Setup [Startup Application](https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en) to run updates after 10 seconds:
+
+```bash
+sleep 10 && sudo upgrade-all
+```
+
 ### Change GRUB boot menu timeout for Ubuntu 20.04
 
 Add line `GRUB_RECORDFAIL_TIMEOUT=3` to file `/etc/default/grub` and execute below command:
