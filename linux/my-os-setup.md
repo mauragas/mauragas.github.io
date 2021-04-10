@@ -95,6 +95,7 @@ docker version
 - [GitHub CLI](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
 - [Azure Data CLI (azdata)](https://docs.microsoft.com/en-us/sql/azdata/install/deploy-install-azdata-linux-package?view=sql-server-ver15)
 - [VS Code](https://code.visualstudio.com/download)
+- [Typora](https://support.typora.io/Typora-on-Linux/)
 
 ## Extensions
 
