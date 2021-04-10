@@ -99,3 +99,11 @@ Install default or preview Blazor template
 dotnet new -i "Microsoft.AspNetCore.Blazor.Templates::*"
 dotnet new -i "Microsoft.AspNetCore.Components.WebAssembly.Templates::3.2.0-preview*"
 ```
+
+## Other commands
+
+| Command                  | Description            |
+| ------------------------ | ---------------------- |
+| `dotnet --info`          | More information       |
+| `dotnet --list-runtimes` | Check runtime versions |
+| `dotnet --list-sdks`     | Check SDK versions     |
