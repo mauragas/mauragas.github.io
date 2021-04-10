@@ -45,7 +45,7 @@ sudo apt update
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https dotnet-sdk-5.0 adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3
+sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https dotnet-sdk-5.0 adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
@@ -62,7 +62,7 @@ sudo apt install -f
 ### Snaps
 
 ```bash
-sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify
+sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify joplin-desktop signal-desktop
 ```
 
 **NOTE:** Spotify (or any other snap package) will be faster if installed as [DEB package](https://www.spotify.com/us/download/linux). Check additional configuration for [bpytop](https://snapcraft.io/bpytop).
@@ -359,6 +359,8 @@ apt update && apt full-upgrade -y && apt autoremove -y && apt autoclean && snap 
 ```
 
 Make file executable `sudo chmod +x /usr/bin/upgrade-all`.
+
+Add line `<current user name> ALL=(ALL) NOPASSWD:/usr/bin/upgrade-all` to the file `/etc/sudoers`.
 
 Setup [Startup Application](https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en) to run updates after 10 seconds:
 
