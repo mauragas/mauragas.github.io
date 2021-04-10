@@ -45,7 +45,7 @@ sudo apt update
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https dotnet-sdk-5.0 adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
+sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
@@ -56,16 +56,29 @@ sudo apt update &&
 sudo apt --fix-broken install &&
 sudo apt dist-upgrade &&
 sudo dpkg -a --configure &&
-sudo apt install -f
+sudo apt install -f &&
+sudo apt autoremove -y
 ```
 
 ### Snaps
 
+- [Microsoft Azure Storage Explorer](https://snapcraft.io/storage-explorer)
+- [Postman](https://snapcraft.io/postman)
+- [Resource monitor for your terminal](https://snapcraft.io/bpytop)
+- [OBS Studio](https://snapcraft.io/obs-studio)
+- [Kdenlive video editor](https://snapcraft.io/kdenlive)
+- [GNU Image Manipulation Program](https://snapcraft.io/gimp)
+- [Spotify](https://snapcraft.io/spotify)
+- [Joplin](https://snapcraft.io/joplin-desktop)
+- [Signal](https://snapcraft.io/signal-desktop)
+- [.NET SDK](https://snapcraft.io/dotnet-sdk)
+
 ```bash
-sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify joplin-desktop signal-desktop
+sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify joplin-desktop signal-desktop &&
+sudo snap install dotnet-sdk --classic
 ```
 
-**NOTE:** Spotify (or any other snap package) will be faster if installed as [DEB package](https://www.spotify.com/us/download/linux). Check additional configuration for [bpytop](https://snapcraft.io/bpytop).
+**NOTE:** Spotify (or any other snap package) will be faster if installed as [DEB package](https://www.spotify.com/us/download/linux).
 
 ### Azure CLI
 
@@ -163,6 +176,37 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 ```
 
 Edit `~/.zshrc` and change variable `ZSH_THEME` to `powerlevel10k/powerlevel10k`. To configure manually run command `p10k configure`.
+
+### A Python-based resource monitor for your terminal
+
+Additional configuration for [bpytop](https://snapcraft.io/bpytop):
+
+```bash
+sudo snap connect bpytop:mount-observe &&
+sudo snap connect bpytop:network-control &&
+sudo snap connect bpytop:hardware-observe &&
+sudo snap connect bpytop:system-observe &&
+sudo snap connect bpytop:process-control &&
+sudo snap connect bpytop:physical-memory-observe
+```
+
+### Dotnet
+
+Additional configuration for [.NET SDK](https://docs.microsoft.com/en-us/dotnet/core/install/linux-snap#install-the-sdk):
+
+```bash
+sudo snap alias dotnet-sdk.dotnet dotnet
+```
+
+**NOTE:** [Export](https://docs.microsoft.com/en-us/dotnet/core/install/linux-snap#export-the-install-location) the install dotnet location to `.zshrc` or `.profile`.
+
+```bash
+export DOTNET_ROOT=/snap/dotnet-sdk/current
+```
+
+#### Enable TAB completion for the .NET CLI
+
+Fallow [steps](https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh) for zsh.
 
 ### Nvidia maximum performance
 
