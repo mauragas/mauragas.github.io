@@ -257,22 +257,30 @@ X-GNOME-Autostart-Delay=10
 
 ### Remap mouse keys for Logitech MX Master 3 mouse
 
+Due to issue with conflicting button mapping with ThinkPad TrackPoint and Logitech mouse I use workaround to map thumb wheel button number 20 and 19 instead of 7 and 6.
+
 Create file `~/.xbindkeysrc` with content:
 
 ```txt
 # Thumb wheel up - increase volume
 "amixer -D pulse sset Master 3%+"
-   b:7
+   b:20 # b:7
 
 # Thumb wheel down - lower volume
 "amixer -D pulse sset Master 3%-"
-   b:6
+   b:19 # b:6
 ```
 
 Execute command:
 
 ```bash
 xbindkeys -f ~/.xbindkeysrc
+```
+
+Create startup script to execute below script. Only needed in case of workaround to replace button number 6 and 7 to 19 and 20.
+
+```bash
+xinput --set-button-map $(xinput list --id-only 'pointer:Logitech MX Master 3') 1 2 3 4 5 19 20 8 9 10 11 12 13 14 15 16 17 18
 ```
 
 ### Special key mapping for Logitech MX Master 3 mouse
