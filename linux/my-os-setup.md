@@ -45,7 +45,7 @@ sudo apt update
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
+sudo apt install -y nvidia-driver-465 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
@@ -82,7 +82,11 @@ sudo snap install dotnet-sdk --classic
 
 ### Azure CLI
 
+Install Azure CLI using predefined script:
+
+```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
 
 Oh-My-Zsh
 
