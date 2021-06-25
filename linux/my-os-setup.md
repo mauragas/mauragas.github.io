@@ -45,7 +45,7 @@ sudo apt update
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-460 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https dotnet-sdk-5.0 adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3
+sudo apt install -y nvidia-driver-465 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
@@ -56,20 +56,37 @@ sudo apt update &&
 sudo apt --fix-broken install &&
 sudo apt dist-upgrade &&
 sudo dpkg -a --configure &&
-sudo apt install -f
+sudo apt install -f &&
+sudo apt autoremove -y
 ```
 
 ### Snaps
 
+- [Microsoft Azure Storage Explorer](https://snapcraft.io/storage-explorer)
+- [Postman](https://snapcraft.io/postman)
+- [Resource monitor for your terminal](https://snapcraft.io/bpytop)
+- [OBS Studio](https://snapcraft.io/obs-studio)
+- [Kdenlive video editor](https://snapcraft.io/kdenlive)
+- [GNU Image Manipulation Program](https://snapcraft.io/gimp)
+- [Spotify](https://snapcraft.io/spotify)
+- [Joplin](https://snapcraft.io/joplin-desktop)
+- [Signal](https://snapcraft.io/signal-desktop)
+- [.NET SDK](https://snapcraft.io/dotnet-sdk)
+
 ```bash
-sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify
+sudo snap install storage-explorer postman bpytop obs-studio kdenlive gimp spotify joplin-desktop signal-desktop &&
+sudo snap install dotnet-sdk --classic
 ```
 
-**NOTE:** Spotify (or any other snap package) will be faster if installed as [DEB package](https://www.spotify.com/us/download/linux). Check additional configuration for [bpytop](https://snapcraft.io/bpytop).
+**NOTE:** Spotify (or any other snap package) will be faster if installed as [DEB package](https://www.spotify.com/us/download/linux).
 
 ### Azure CLI
 
+Install Azure CLI using predefined script:
+
+```bash
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+```
 
 Oh-My-Zsh
 
@@ -95,6 +112,7 @@ docker version
 - [GitHub CLI](https://github.com/cli/cli/blob/trunk/docs/install_linux.md)
 - [Azure Data CLI (azdata)](https://docs.microsoft.com/en-us/sql/azdata/install/deploy-install-azdata-linux-package?view=sql-server-ver15)
 - [VS Code](https://code.visualstudio.com/download)
+- [Typora](https://support.typora.io/Typora-on-Linux/)
 
 ## Extensions
 
@@ -163,6 +181,37 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-~
 
 Edit `~/.zshrc` and change variable `ZSH_THEME` to `powerlevel10k/powerlevel10k`. To configure manually run command `p10k configure`.
 
+### A Python-based resource monitor for your terminal
+
+Additional configuration for [bpytop](https://snapcraft.io/bpytop):
+
+```bash
+sudo snap connect bpytop:mount-observe &&
+sudo snap connect bpytop:network-control &&
+sudo snap connect bpytop:hardware-observe &&
+sudo snap connect bpytop:system-observe &&
+sudo snap connect bpytop:process-control &&
+sudo snap connect bpytop:physical-memory-observe
+```
+
+### Dotnet
+
+Additional configuration for [.NET SDK](https://docs.microsoft.com/en-us/dotnet/core/install/linux-snap#install-the-sdk):
+
+```bash
+sudo snap alias dotnet-sdk.dotnet dotnet
+```
+
+**NOTE:** [Export](https://docs.microsoft.com/en-us/dotnet/core/install/linux-snap#export-the-install-location) the install dotnet location to `.zshrc` or `.profile`.
+
+```bash
+export DOTNET_ROOT=/snap/dotnet-sdk/current
+```
+
+#### Enable TAB completion for the .NET CLI
+
+Fallow [steps](https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete#zsh) for zsh.
+
 ### Nvidia maximum performance
 
 Create file `~/.config/autostart/nvidia-settings.desktop` with content:
@@ -212,22 +261,30 @@ X-GNOME-Autostart-Delay=10
 
 ### Remap mouse keys for Logitech MX Master 3 mouse
 
+Due to issue with conflicting button mapping with ThinkPad TrackPoint and Logitech mouse I use workaround to map thumb wheel button number 20 and 19 instead of 7 and 6.
+
 Create file `~/.xbindkeysrc` with content:
 
 ```txt
 # Thumb wheel up - increase volume
 "amixer -D pulse sset Master 3%+"
-   b:7
+   b:20 # b:7
 
 # Thumb wheel down - lower volume
 "amixer -D pulse sset Master 3%-"
-   b:6
+   b:19 # b:6
 ```
 
 Execute command:
 
 ```bash
 xbindkeys -f ~/.xbindkeysrc
+```
+
+Create startup script to execute below script. Only needed in case of workaround to replace button number 6 and 7 to 19 and 20.
+
+```bash
+xinput --set-button-map $(xinput list --id-only 'pointer:Logitech MX Master 3') 1 2 3 4 5 19 20 8 9 10 11 12 13 14 15 16 17 18
 ```
 
 ### Special key mapping for Logitech MX Master 3 mouse
@@ -348,6 +405,24 @@ Run unattended-upgrades and show update logs:
 ```bash
 sudo unattended-upgrades --debug &&
 cat /var/log/unattended-upgrades/unattended-upgrades.log
+```
+
+#### Run updates on startup with script
+
+Create script `/usr/bin/upgrade-all` with content:
+
+```bash
+apt update && apt full-upgrade -y && apt autoremove -y && apt autoclean && snap refresh
+```
+
+Make file executable `sudo chmod +x /usr/bin/upgrade-all`.
+
+Add line `<current user name> ALL=(ALL) NOPASSWD:/usr/bin/upgrade-all` to the file `/etc/sudoers`.
+
+Setup [Startup Application](https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en) to run updates after 10 seconds:
+
+```bash
+sleep 10 && sudo upgrade-all
 ```
 
 ### Change GRUB boot menu timeout for Ubuntu 20.04
