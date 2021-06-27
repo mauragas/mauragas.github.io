@@ -284,7 +284,7 @@ xbindkeys -f ~/.xbindkeysrc
 Create startup script to execute below script. Only needed in case of workaround to replace button number 6 and 7 to 19 and 20.
 
 ```bash
-xinput --set-button-map $(xinput list --id-only 'pointer:Logitech MX Master 3') 1 2 3 4 5 19 20 8 9 10 11 12 13 14 15 16 17 18
+sh -c "sleep 3 && xinput --set-button-map $(xinput list --id-only 'pointer:Logitech MX Master 3') 1 2 3 4 5 19 20 8 9 10 11 12 13 14 15 16 17 18"
 ```
 
 ### Special key mapping for Logitech MX Master 3 mouse
@@ -422,7 +422,7 @@ Add line `<current user name> ALL=(ALL) NOPASSWD:/usr/bin/upgrade-all` to the fi
 Setup [Startup Application](https://help.ubuntu.com/stable/ubuntu-help/startup-applications.html.en) to run updates after 10 seconds:
 
 ```bash
-sleep 10 && sudo upgrade-all
+sh -c "sleep 5 && sudo upgrade-all"
 ```
 
 ### Change GRUB boot menu timeout for Ubuntu 20.04
