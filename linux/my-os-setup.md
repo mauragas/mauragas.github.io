@@ -475,3 +475,11 @@ sudo dotnet run --project ToolsAndExamples/Tools/AdAwayHost/src/AdAwayHost.Conso
 sudo rm -r ToolsAndExamples &&
 sudo dotnet nuget locals all --clear
 ```
+
+### Disable network printers
+
+```bash
+sudo cupsctl --no-share-printers &&
+sudo systemctl stop cups-browsed &&
+sudo systemctl disable cups-browsed
+```
