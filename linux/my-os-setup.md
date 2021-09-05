@@ -31,7 +31,9 @@ Icons and themes
 sudo add-apt-repository ppa:daniruiz/flat-remix
 ```
 
-Install [Dotnet](https://dotnet.microsoft.com/download/dotnet-core) core:
+### Dotnet using APT
+
+Add [Dotnet](https://dotnet.microsoft.com/download/dotnet-core) repository:
 
 ```bash
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb &&
@@ -40,12 +42,32 @@ rm packages-microsoft-prod.deb &&
 sudo apt update
 ```
 
+### Dotnet using Snap
+
+Install [dotnet SDK](https://snapcraft.io/dotnet-sdk) stable:
+
+```bash
+sudo snap install dotnet-sdk --classic
+```
+
+Install dotnet SDK beta:
+
+```bash
+sudo snap install dotnet-sdk --channel=6.0/beta --classic
+```
+
+Create a link:
+
+```bash
+sudo ln -s /snap/dotnet-sdk/current/dotnet /usr/local/bin/dotnet
+```
+
 ## Applications
 
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-465 curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
+sudo apt install -y nvidia-driver-470 linux-oem-osp1 linux-firmware curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
