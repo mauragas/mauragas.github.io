@@ -1,7 +1,6 @@
-namespace Application.Services.Interfaces
+namespace Application.Services.Interfaces;
+
+public interface IMarkdownParser
 {
-  public interface IMarkdownParser
-  {
-    string ParseContentToHtml(string content);
-  }
+  string ParseContentToHtml(string content);
 }

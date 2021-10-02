@@ -1,18 +1,17 @@
 using Application.Shared.Models;
 using Application.Services.Interfaces;
 
-namespace Application.Services
+namespace Application.Services;
+
+public class ContentCacheService : IContentCache
 {
-  public class ContentCacheService : IContentCache
-  {
-    public List<PageFileInfo> Pages { get; set; }
+  public List<PageFileInfo> Pages { get; set; }
 
-    private readonly IPageRepository repository;
+  private readonly IPageRepository repository;
 
-    public ContentCacheService(IPageRepository pageRepository) =>
-      this.repository = pageRepository;
+  public ContentCacheService(IPageRepository pageRepository) =>
+    this.repository = pageRepository;
 
-    public async Task InitializeAsync() =>
-      Pages = await this.repository?.GetAllPagesAsync();
-  }
+  public async Task InitializeAsync() =>
+    Pages = await this.repository?.GetAllPagesAsync();
 }

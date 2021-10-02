@@ -4,46 +4,45 @@ using Markdig;
 using Markdig.Extensions.AutoIdentifiers;
 using Application.Services.MarkdigParser;
 
-namespace Application.Services
+namespace Application.Services;
+
+public class MarkdigParserService : IMarkdownParser
 {
-  public class MarkdigParserService : IMarkdownParser
-  {
-    private readonly MarkdownPipeline markdownPipeline;
+  private readonly MarkdownPipeline markdownPipeline;
 
-    public MarkdigParserService() => this.markdownPipeline = GetMarkdownPipeline();
+  public MarkdigParserService() => this.markdownPipeline = GetMarkdownPipeline();
 
-    public string ParseContentToHtml(string content) =>
-      Markdown.ToHtml(content, this.markdownPipeline);
+  public string ParseContentToHtml(string content) =>
+    Markdown.ToHtml(content, this.markdownPipeline);
 
-    private static MarkdownPipeline GetMarkdownPipeline() => new MarkdownPipelineBuilder()
-        .UseAbbreviations()
-        .UseAdvancedExtensions()
-        .UseAutoIdentifiers(AutoIdentifierOptions.GitHub)
-        .UseAutoLinks()
-        .UseBootstrap()
-        .UseCitations()
-        .UseCustomContainers()
-        .UseDefinitionLists()
-        .UseDiagrams()
-        .UseEmojiAndSmiley(true)
-        .UseEmphasisExtras()
-        .UseFigures()
-        .UseFooters()
-        .UseFootnotes()
-        .UseGenericAttributes()
-        .UseGlobalization()
-        .UseGridTables()
-        .UseListExtras()
-        .UseMathematics()
-        .UseMediaLinks()
-        .UsePipeTables()
-        .UsePragmaLines()
-        .UsePreciseSourceLocation()
-        .UseSmartyPants()
-        .UseSoftlineBreakAsHardlineBreak()
-        .UseTaskLists()
-        .UseYamlFrontMatter()
-        .UseSyntaxHighlighting(StyleDictionary.DefaultLight, true)
-        .Build();
-  }
+  private static MarkdownPipeline GetMarkdownPipeline() => new MarkdownPipelineBuilder()
+      .UseAbbreviations()
+      .UseAdvancedExtensions()
+      .UseAutoIdentifiers(AutoIdentifierOptions.GitHub)
+      .UseAutoLinks()
+      .UseBootstrap()
+      .UseCitations()
+      .UseCustomContainers()
+      .UseDefinitionLists()
+      .UseDiagrams()
+      .UseEmojiAndSmiley(true)
+      .UseEmphasisExtras()
+      .UseFigures()
+      .UseFooters()
+      .UseFootnotes()
+      .UseGenericAttributes()
+      .UseGlobalization()
+      .UseGridTables()
+      .UseListExtras()
+      .UseMathematics()
+      .UseMediaLinks()
+      .UsePipeTables()
+      .UsePragmaLines()
+      .UsePreciseSourceLocation()
+      .UseSmartyPants()
+      .UseSoftlineBreakAsHardlineBreak()
+      .UseTaskLists()
+      .UseYamlFrontMatter()
+      .UseSyntaxHighlighting(StyleDictionary.DefaultLight, true)
+      .Build();
 }
