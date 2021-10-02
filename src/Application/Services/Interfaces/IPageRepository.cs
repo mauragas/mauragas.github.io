@@ -1,12 +1,9 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Application.Shared.Models;
 
-namespace Application.Services.Interfaces
+namespace Application.Services.Interfaces;
+
+public interface IPageRepository
 {
-  public interface IPageRepository
-  {
-    Task<string> GetPageContentAsync(string pathToFile);
-    Task<List<PageFileInfo>> GetAllPagesAsync();
-  }
+  Task<string> GetPageContentAsync(string pathToFile);
+  Task<List<PageFileInfo>> GetAllPagesAsync();
 }

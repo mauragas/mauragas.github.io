@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using Application.Shared.Models;
 
-namespace PageData.Generator
+namespace PageData.Generator;
+
+public interface IGenerator
 {
-  public interface IGenerator
-  {
-    List<PageFileInfo> GetPages(string path);
-  }
+  List<PageFileInfo> GetPages(string path);
 }

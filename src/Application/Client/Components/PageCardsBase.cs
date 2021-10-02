@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using Application.Shared.Models;
 using Microsoft.AspNetCore.Components;
 
-namespace Application.Client.Components
+namespace Application.Client.Components;
+
+public class PageCardsBase : ComponentBase
 {
-  public class PageCardsBase : ComponentBase
-  {
-    [Parameter]
-    public List<PageFileInfo> PageFiles { get; set; }
-  }
+  [Parameter]
+  public List<PageFileInfo> PageFiles { get; set; }
 }

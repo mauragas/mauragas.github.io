@@ -16,7 +16,7 @@ rm -rfv $BuildDirectory/*
 git clean -fdx
 dotnet build ./Application/Client -c Release
 dotnet publish ./Application/Client -c Release
-cp -r ./Application/Client/bin/Release/net5.0/publish/wwwroot/* $BuildDirectory
+cp -r ./Application/Client/bin/Release/net6.0/publish/wwwroot/* $BuildDirectory
 mv $BuildDirectory/index.html $BuildDirectory/404.html
 mv $BuildDirectory/index.html.br $BuildDirectory/404.html.br
 mv $BuildDirectory/index.html.gz $BuildDirectory/404.html.gz

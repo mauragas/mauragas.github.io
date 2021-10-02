@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using Application.Shared.Models;
 
-namespace Application.Services.Interfaces
+namespace Application.Services.Interfaces;
+
+public interface IContentCache
 {
-  public interface IContentCache
-  {
-    List<PageFileInfo> Pages { get; set; }
-  }
+  List<PageFileInfo> Pages { get; set; }
 }
