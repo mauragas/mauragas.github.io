@@ -1,10 +1,6 @@
-﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Application.Services.Interfaces;
+﻿using Application.Services.Interfaces;
 using Application.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Application.Client
 {

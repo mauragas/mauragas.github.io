@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using Application.Shared.Models;
-using System.Threading.Tasks;
 using Application.Services.Interfaces;
 
 namespace Application.Services

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Serilog;
+﻿using Serilog;
 
 namespace PageData.Console
 {

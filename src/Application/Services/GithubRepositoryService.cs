@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Application.Services.Interfaces;
 using Application.Shared.Models;
 using System.Text.Json;

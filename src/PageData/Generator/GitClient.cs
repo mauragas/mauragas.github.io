@@ -1,8 +1,5 @@
 using Application.Shared.Models;
-using System;
-using System.Linq;
 using LibGit2Sharp;
-using System.IO;
 
 namespace PageData.Generator
 {

@@ -1,6 +1,3 @@
-using System.Linq;
-using System;
-using System.IO;
 using CommandLine;
 using Microsoft.Extensions.Configuration;
 using Serilog;
