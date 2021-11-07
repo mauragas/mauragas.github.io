@@ -67,7 +67,7 @@ sudo ln -s /snap/dotnet-sdk/current/dotnet /usr/local/bin/dotnet
 ### APT
 
 ```bash
-sudo apt install -y nvidia-driver-470 linux-oem-osp1 linux-firmware curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer
+sudo apt install -y nvidia-driver-470 linux-oem-osp1 linux-firmware curl make git gnome-tweaks tilix python3-nautilus zsh pulseeffects transmission apt-transport-https adb gnome-shell-extension-bluetooth-quick-connect gnome-shell-extension-system-monitor xbindkeys flat-remix flat-remix-gtk flat-remix-gnome vlc ufw gufw azdata-cli azure-functions-core-tools-3 stacer virtualbox linux-headers-virtual virtualbox-guest-dkms virtualbox-guest-utils smbclient
 ```
 
 In case you will get any issues installing packages you can try to fix it with commands:
@@ -391,6 +391,29 @@ sudo systemctl status ufw.service
 
 Open page `about:config` and set value `browser.backspace_action` to `0`;
 
+### Nautilus
+
+#### Use backspace as back button
+
+Install Pyhton package for Nautilus:
+
+```bash
+# Ubuntu
+sudo apt-get install python-nautilus
+
+# Fedora
+sudo dnf install nautilus-python
+```
+
+Configure extension script:
+
+```bash
+mkdir -p ~/.local/share/nautilus-python/extensions
+cd ~/.local/share/nautilus-python/extensions
+wget https://raw.githubusercontent.com/riclc/nautilus_backspace/master/BackspaceBack.py
+killall nautilus
+```
+
 #### Open links in different Firefox profile
 
 To fix issue when Firefox open external links in different profile execute command `firefox -P` and remove second profile.
@@ -482,4 +505,26 @@ sudo dotnet nuget locals all --clear
 sudo cupsctl --no-share-printers &&
 sudo systemctl stop cups-browsed &&
 sudo systemctl disable cups-browsed
+```
+
+### VirtualBox
+
+Enable file share between VM and host workstation:
+
+```bash
+sudo usermod -G vboxsf -a $USER
+sudo adduser $USER vboxsf
+```
+
+#### Stuck window issue
+
+Workaround to fix issue when virtualbox window cannot be moved, go to `File` -> `Preferences` -> `Input` and disbale `Auto capture keyboard`.
+
+### Smbclient protocol negotiation failed
+
+Add the following settings under GLOBAL in file `/etc/samba/smb.conf`:
+
+```conf
+client min protocol = CORE
+client max protocol = SMB3
 ```
