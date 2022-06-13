@@ -119,5 +119,16 @@
     "LatestAuthor": "Karolis Mauragas",
     "PictureUrl": "https://www.snapagogo.com/images/2020/12/24/remote-raspberry-pi-blazor-app.png",
     "FileExtension": ".md"
+  },
+  {
+    "FileName": "exam-az-204",
+    "Path": "azure",
+    "Title": "Exam AZ-204",
+    "Description": "Exam AZ-204: Developing Solutions for Microsoft Azure",
+    "Content": "",
+    "LatestUpdate": "2022-06-13T08:45:57+01:00",
+    "LatestAuthor": "Karolis Mauragas",
+    "PictureUrl": "",
+    "FileExtension": ".md"
   }
 ]
