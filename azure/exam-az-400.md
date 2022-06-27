@@ -1,3 +1,7 @@
+# Exam AZ-400
+
+- [Exam AZ-400: Designing and Implementing Microsoft DevOps Solutions](https://docs.microsoft.com/en-us/learn/certifications/exams/az-400)
+
 # Configure processes and communications (10—15%)
 
 ## Configure activity traceability and flow of work
